@@ -1,0 +1,97 @@
+{
+  "as_of": "2026-10-09T22:48:35.713Z",
+  "dataset_sha256": "b54c79c89d43853ea97db086174968c6de3ba0bfc1980f2009293c55389ef72d",
+  "development_counts": {
+    "train": 6242,
+    "validation": 2334
+  },
+  "eligibility": {
+    "canonical_label_verified": false,
+    "eligibility_policy": "observed_first_contact_proxy",
+    "eligible_rows": 9940,
+    "excluded_reasons": {},
+    "historical_availability_verified": false,
+    "history_scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+    "input_rows": 9940,
+    "lifetime_complete": false,
+    "membership_policy": "provided immutable cold track; ambiguous first-call ties quarantined by preparation",
+    "rows_outside_locked_cold_membership": 29344,
+    "source_dataset_rows": 39284
+  },
+  "eligibility_policy": "observed_first_contact_proxy",
+  "environment": {
+    "packages": {
+      "numpy": "2.5.3",
+      "scikit-learn": null,
+      "tzdata": "2026.4"
+    },
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python": "3.14.5",
+    "seed": 1729
+  },
+  "feature_provenance": {
+    "account_created_at": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "business_type": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "city": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "industry": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "segment": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "state": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    }
+  },
+  "history_scope": {
+    "availability_verified": false,
+    "complete_within_scope": true,
+    "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+    "coverage_end": "2026-09-26T00:00:00+05:30",
+    "coverage_start": "2026-05-01T00:00:00+05:30",
+    "lifetime_complete": false,
+    "population": "general_erp_employee_outbound",
+    "prior_call_search_verified": true,
+    "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+    "source_ids": [
+      13
+    ],
+    "source_tables": [
+      "redash.click_to_call"
+    ]
+  },
+  "label_kind": "proxy",
+  "split_sha256": "847a8152eb7fdbba15bfba9e8f3f2c7c59258c6f30ca6e787110ae467f548f0b",
+  "timezone": "Asia/Kolkata",
+  "trained_target": "observed_linked_physical_recorded_met_within14days"
+}

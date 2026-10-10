@@ -1,0 +1,151 @@
+{
+  "kind": "synthetic_backend_eligibility_and_mocked_provider_contract_evaluation",
+  "scientific_accuracy_evaluated": false,
+  "live_gpt6_route_selection_agreement": null,
+  "backend_route_agreement": 1,
+  "constraint_violations": 0,
+  "grounding_passes": 14,
+  "total_cases": 14,
+  "cost": 0,
+  "results": [
+    {
+      "name": "adequate_history",
+      "expected_eligible_route": "history_aware",
+      "eligible_route": "history_aware",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 394.83080000000007,
+      "live_llm": false
+    },
+    {
+      "name": "sparse_history",
+      "expected_eligible_route": "sparse_history",
+      "eligible_route": "sparse_history",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 366.36339999999996,
+      "live_llm": false
+    },
+    {
+      "name": "verified_first_contact",
+      "expected_eligible_route": "cold_start",
+      "eligible_route": "cold_start",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 475.07190000000014,
+      "live_llm": false
+    },
+    {
+      "name": "zero_observed_unverified_scope",
+      "expected_eligible_route": "fallback",
+      "eligible_route": "fallback",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 434.4074999999998,
+      "live_llm": false
+    },
+    {
+      "name": "failed_history_retrieval",
+      "expected_eligible_route": "fallback",
+      "eligible_route": "fallback",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 0.4724999999998545,
+      "live_llm": false
+    },
+    {
+      "name": "missing_metadata",
+      "expected_eligible_route": "history_aware",
+      "eligible_route": "history_aware",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 440.6329999999998,
+      "live_llm": false
+    },
+    {
+      "name": "contradictory_history",
+      "expected_eligible_route": "fallback",
+      "eligible_route": "fallback",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 0.2256999999999607,
+      "live_llm": false
+    },
+    {
+      "name": "do_not_call",
+      "expected_eligible_route": "history_aware",
+      "eligible_route": "history_aware",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 0.17070000000012442,
+      "live_llm": false
+    },
+    {
+      "name": "unknown_model_artifacts",
+      "expected_eligible_route": "history_aware",
+      "eligible_route": "history_aware",
+      "final_route": "fallback",
+      "agreement": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 338.9358000000002,
+      "live_llm": false
+    },
+    {
+      "name": "invalid_tool",
+      "deterministic_fallback": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 6,
+      "live_llm": false
+    },
+    {
+      "name": "invalid_arguments",
+      "deterministic_fallback": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 1,
+      "live_llm": false
+    },
+    {
+      "name": "fabricated_score",
+      "deterministic_fallback": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 1,
+      "live_llm": false
+    },
+    {
+      "name": "prompt_injection",
+      "deterministic_fallback": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 0,
+      "live_llm": false
+    },
+    {
+      "name": "provider_unavailable",
+      "deterministic_fallback": true,
+      "constraint_violations": 0,
+      "explanation_grounded": true,
+      "latency_ms": 0,
+      "live_llm": false
+    }
+  ]
+}

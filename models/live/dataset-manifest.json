@@ -1,0 +1,38 @@
+{
+ "version": "btc-research-v4",
+ "as_of": "2026-10-10T02:40:33.130062+00:00",
+ "dataset_sha256": "42abf55a17148163c38667ad90232a9bd22adace9d835d7fe60386a0820f9615",
+ "deduplicated_rows": 585258,
+ "sellers": 163727,
+ "positives": 2683,
+ "label_kind": "proxy",
+ "target_name": "observed_linked_physical_recorded_met_within14days",
+ "canonical_label_verified": false,
+ "source_ids": [
+  13
+ ],
+ "sample": "md5(seller_id) first 28 bits mod 100 < 8 (seller cluster sample)",
+ "splits": {
+  "warmup": [
+   "2026-08-11",
+   "2026-08-17"
+  ],
+  "train": [
+   "2026-08-18",
+   "2026-08-24"
+  ],
+  "dev": [
+   "2026-08-25",
+   "2026-08-31"
+  ],
+  "embargo": [
+   "2026-09-01",
+   "2026-09-13"
+  ],
+  "test": [
+   "2026-09-14",
+   "2026-09-25"
+  ]
+ },
+ "documentation": "docs/best-time-to-call/research-v4/reproduce.md"
+}

@@ -1,0 +1,97 @@
+{
+  "artifact_status": "blocked_missing_verified_training_data",
+  "baseline_metrics": null,
+  "blocked_reasons": [
+    "No accessible canonical meeting_done definition and verified call attribution have been established.",
+    "A bounded attempt sample cannot establish zero prior target-campaign calls or complete seller history.",
+    "Unlinked or unobserved completed-meeting outcomes must remain unknown, not become negative labels."
+  ],
+  "calibration": {
+    "calibrated": false,
+    "kind": "none",
+    "reason": "no verified eligible training data"
+  },
+  "canonical_label_verified": false,
+  "completed_meeting_positive_count": null,
+  "deployment_approved": false,
+  "eligible_first_contact_training_rows": 0,
+  "held_out_metrics": null,
+  "measured_eligibility_audit": {
+    "as_of": "2026-10-09T19:20:02.069000+00:00",
+    "calibration_fitted": false,
+    "canonical_known_labels": 0,
+    "cutoff_basis": "latest extraction-bound available_at; historical call observation availability is unverified",
+    "dataset_sha256": "40fd0e7ba4625cc336e896c1666815d1983b3d4532838b137faa2df8b0517412",
+    "distinct_sellers": 4706,
+    "eligible_split_counts": {
+      "test": 0,
+      "train": 0,
+      "validation": 0
+    },
+    "explicit_proxy_eligibility": {
+      "eligible_rows": 0,
+      "excluded_reasons": {
+        "history_not_verified_complete": 4978,
+        "immature_label": 300,
+        "missing_completed_meeting_label": 4978,
+        "not_verified_first_contact": 4978
+      },
+      "input_rows": 4978
+    },
+    "fitted_model": false,
+    "input_attempts": 4978,
+    "known_primary_labels": 0,
+    "locked_membership_counts": {
+      "cold_start": {
+        "test": 1132,
+        "train": 2162,
+        "validation": 1134
+      },
+      "history": {
+        "test": 1187,
+        "train": 2278,
+        "validation": 1200
+      }
+    },
+    "observed_recording_proxy_positives": 0,
+    "previous_split_review": {
+      "manifest": ".data/best-time-to-call/splits.json",
+      "scored": false,
+      "split_sha256": "a06a55f5a804df779b042d50964b71b594c17b33dfaad783fe24ba2b6de38bc0",
+      "status": "preserved_blocked_v1_maturity_overlap"
+    },
+    "split_manifest": ".data/best-time-to-call/splits-v2.json",
+    "split_maturity_check": "both tracks pass maturity-before-next-period check; all rows remain ineligible",
+    "split_revision_reason": "Before fitting/scoring, validation_end corrected to exclude August 12 observations and preserve a 21-day maturity gap",
+    "split_sha256": "3cd3aff17261cce0cce88766a09625d875dc5b84302e32d7b821d682b7a6c782",
+    "strict_eligibility": {
+      "eligible_rows": 0,
+      "excluded_reasons": {
+        "history_not_verified_complete": 4978,
+        "immature_label": 300,
+        "missing_completed_meeting_label": 4978,
+        "not_verified_first_contact": 4978,
+        "proxy_not_enabled": 4978
+      },
+      "input_rows": 4978
+    },
+    "test_scores_accessed": false,
+    "unknown_primary_labels": 4978,
+    "verified_complete_histories": 0
+  },
+  "model_version": null,
+  "pipeline": "py -3.14 -m ml.cold_start.train --dataset <attempts.jsonl> --splits <splits.json> --output <ignored-model-directory> --as-of <explicit-ISO-cutoff>",
+  "policy_lift_measured": false,
+  "primary_target": "meeting_done",
+  "required_inputs": [
+    "Verified canonical outcome or explicitly separate mature proxy labels with reliable attempt attribution.",
+    "Complete prior target-campaign outbound history coverage at each first-contact decision.",
+    "Checksum-bound immutable seller-disjoint chronological train/validation/test membership.",
+    "Point-in-time metadata provenance or a disclosed time-only baseline."
+  ],
+  "route": "cold_start",
+  "schema_version": 1,
+  "status_date": "2026-10-10",
+  "tests": "py -3.14 tests/cold-start-checks.py",
+  "trained": false
+}

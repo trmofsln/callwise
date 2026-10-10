@@ -1,0 +1,73 @@
+{
+  "aspirational_policy_lift": {
+    "assessed": false,
+    "positive_95pct_lower_bound": true,
+    "reason": "observational schedule does not identify uncalled outcomes",
+    "relative_yield": 0.1
+  },
+  "baseline_validation": {
+    "at_call_budget": {
+      "budget": 467,
+      "expected_completed_meetings": 1.0,
+      "precision": 0.0021413276231263384,
+      "recall": 0.3333333333333333,
+      "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+      "yield": 0.0021413276231263384
+    },
+    "attempts": 2334,
+    "average_precision": 0.0025296731515968016,
+    "brier": 0.001297269474727413,
+    "budget_fraction": 0.2,
+    "calibration_bins": [
+      {
+        "bin": 0,
+        "count": 2334,
+        "mean_prediction": 0.0030326658567311803,
+        "observed_rate": 0.0012853470437017994
+      }
+    ],
+    "calls_per_completed_meeting": 778.0,
+    "class_prevalence": 0.0012853470437017994,
+    "completed_meetings": 3,
+    "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+    "log_loss": 0.010889150394670389,
+    "majority_class_accuracy": 0.9987146529562982,
+    "meetings_per_100_attempts": 0.12853470437017994,
+    "roc_auc": 0.5906620906620906
+  },
+  "calibration": {
+    "independent_quality_assessment": "locked final test only",
+    "method": "validation-fitted Platt after raw candidate selection",
+    "minimum_validation_negatives": 20,
+    "minimum_validation_positives": 20,
+    "validation_reused_for_selection": true
+  },
+  "canonical_objective_verified": false,
+  "development_support_sufficient": false,
+  "label_kind": "proxy",
+  "minimum_support": {
+    "test_attempts": 30,
+    "test_positives": 5,
+    "training_attempts": 100,
+    "training_positives": 10,
+    "validation_attempts": 30,
+    "validation_positives": 5
+  },
+  "predictive_criteria": {
+    "max_brier_degradation": 0.0001,
+    "max_log_loss_degradation": 0.001,
+    "minimum_average_precision_vs_prevalence": 1.0
+  },
+  "primary_target": "meeting_done",
+  "selection": "lowest raw validation log_loss subject to the preregistered Brier tolerance versus hour/day",
+  "tolerance_basis": {
+    "brier_floor": 0.0001,
+    "frozen_for_final_test": true,
+    "kind": "validation-baseline relative tolerance with absolute floors",
+    "log_loss_floor": 0.001,
+    "rationale": "rare proxy prevalence makes original absolute 0.01/0.02 tolerances overly permissive",
+    "relative_fraction": 0.05
+  },
+  "written_before_selection": true,
+  "written_before_supervised_candidate_fitting": true
+}

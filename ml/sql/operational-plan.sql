@@ -1,0 +1,2 @@
+EXPLAIN SELECT sts_dsr_meeting_id,sts_dsr_meeting_entrydate
+FROM redash.sts_dsr_meeting ORDER BY sts_dsr_meeting_id DESC LIMIT 100

@@ -1,0 +1,99 @@
+{
+ "model_version": "erp-outbound-observed-proxy-v4-b1-hour-day-s80-b558f42d",
+ "model_sha256": "6f3cd7a8bd87c5c39e0c068e466c1e526b199beeb98d1a7aa982bfd728215275",
+ "trained_target": "observed_linked_physical_recorded_met_within14days",
+ "label_kind": "proxy",
+ "experimental": true,
+ "deployment_approved": false,
+ "route": "erp_outbound_observed_proxy",
+ "split": {
+  "name": "test",
+  "window": [
+   "2026-09-14",
+   "2026-09-25"
+  ],
+  "excluded_prior_published_test_calls": {
+   "prior_published_test_calls_removed_from_test": 1000
+  }
+ },
+ "evaluated_at": "2026-10-10T02:55:26.426931+00:00",
+ "support_sufficient": true,
+ "predictive_acceptance_met": true,
+ "acceptance_rule": "seller-cluster 95% CI of AP difference vs v3 frozen model > 0 and of log-loss difference < 0 on the same sealed test",
+ "selected_metrics": {
+  "attempts": 269060,
+  "completed_meetings": 1332,
+  "class_prevalence": 0.0049505686463985725,
+  "average_precision": 0.008528925246970404,
+  "roc_auc": 0.6754104503041858,
+  "brier": 0.004917492141861225,
+  "log_loss": 0.03040732084881538
+ },
+ "hour_day_baseline_metrics": {
+  "attempts": 269060,
+  "completed_meetings": 1332,
+  "class_prevalence": 0.0049505686463985725,
+  "average_precision": 0.00797477046192387,
+  "roc_auc": 0.6516671165652594,
+  "brier": 0.004922417438051214,
+  "log_loss": 0.030931809273899866
+ },
+ "baseline_model": "v3 frozen general_erp (app scoring)",
+ "paired_vs_v3": {
+  "ap_difference": 0.0005541547850465341,
+  "ap_relative": 0.06948849345475039,
+  "log_loss_difference": -0.000524488425084485,
+  "brier_difference": -4.9252961899894435e-06,
+  "yield@0.2_difference": 0.00011445532916895367,
+  "intervals_95": {
+   "ap": [
+    0.00012130061658102289,
+    0.000933094935245886
+   ],
+   "log_loss": [
+    -0.0006890687705478455,
+    -0.00035050487637787957
+   ],
+   "brier": [
+    -6.065414633984784e-06,
+    -3.7111715148220636e-06
+   ],
+   "yield@0.2": [
+    -0.0006991176882680198,
+    0.0008670961584860473
+   ]
+  },
+  "replicates": 1000,
+  "cluster": "seller",
+  "seed": 20261010
+ },
+ "uncertainty": {
+  "intervals": {
+   "average_precision": {
+    "lower": 0.007922483165602127,
+    "upper": 0.009222430342487715,
+    "replicates": 1000,
+    "cluster": "seller",
+    "seed": 20261010
+   }
+  }
+ },
+ "within_seller_hour_concordance": {
+  "v4": {
+   "sellers": 1015,
+   "pairs": 6451.0,
+   "concordance": 0.6363354518679275
+  },
+  "v3": {
+   "sellers": 1015,
+   "pairs": 6451.0,
+   "concordance": 0.647806541621454
+  }
+ },
+ "limitations": [
+  "proxy label, not canonical meeting_done",
+  "no measured timing (within-seller) improvement over v3",
+  "within CSDMERP/MERP channels the retrained table is not better than v3 (see research-v4 decision report)"
+ ],
+ "policy_lift_measured": false
+}

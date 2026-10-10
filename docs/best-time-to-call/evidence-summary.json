@@ -1,0 +1,743 @@
+{
+  "generated_at": "2026-10-10T00:25:12.028Z",
+  "primary_target": "meeting_done",
+  "canonical_models_trained": false,
+  "canonical_held_out_results": null,
+  "policy_lift_measured": false,
+  "environment": {
+    "node": "24.14.0",
+    "packages": {
+      "next": "16.4.0",
+      "react": "19.3.0",
+      "typescript": "5.9.3"
+    },
+    "extraction_seed": 42,
+    "bootstrap_seed": 1729,
+    "python": {
+      "python": "3.14.5",
+      "packages": {
+        "numpy": "2.5.3",
+        "tzdata": "2026.4",
+        "pypdf": "6.19.0"
+      }
+    }
+  },
+  "data_quality": {
+    "canonical_class_prevalence": null,
+    "canonical_known_labels": 0,
+    "checksum": "40fd0e7ba4625cc336e896c1666815d1983b3d4532838b137faa2df8b0517412",
+    "conflicting_seller_ucid_rows_excluded": 0,
+    "coverage": [
+      "2026-05-05T09:00:42+05:30",
+      "2026-09-23T16:59:43+05:30"
+    ],
+    "deduplicated": 0,
+    "distinct_attempts": 4978,
+    "limits": [
+      "Sampling is capped within fixed hour/date strata, not population representative.",
+      "Current snapshots and unreliable last-login excluded.",
+      "Missing joins are unknown outcomes.",
+      "Zero observed positives cannot identify a completed-meeting classifier.",
+      "14-day attribution and 7-day grace are provisional assumptions, not verified business definitions."
+    ],
+    "metadata_missingness": 1,
+    "missing_call_times_excluded": 0,
+    "observed_linked_recording_proxy_positives": 0,
+    "observed_proxy_unknown": 2291,
+    "raw_attempts": 4978,
+    "secondary_connect_counts": {
+      "0": 2348,
+      "1": 2630
+    },
+    "sellers": 4706,
+    "splits": {
+      "cold_start": {
+        "test": 1129,
+        "train": 2162,
+        "validation": 1415
+      },
+      "history": {
+        "test": 1184,
+        "train": 2278,
+        "validation": 1500
+      }
+    },
+    "validated_joins": {
+      "click_link_verified": 1500,
+      "dsr_link_verified": 2687,
+      "lead_join_matched": 2381
+    },
+    "verified_complete_histories": 0
+  },
+  "live_schema_report": {
+    "audited_at": "2026-10-09T19:18:51.964Z",
+    "sources": [
+      {
+        "id": 70,
+        "status": "ok",
+        "table_count": 17,
+        "canonical_candidates": []
+      },
+      {
+        "id": 55,
+        "status": "ok",
+        "table_count": 605,
+        "canonical_candidates": []
+      },
+      {
+        "id": 10,
+        "status": "ok",
+        "table_count": 140,
+        "canonical_candidates": []
+      },
+      {
+        "id": 11,
+        "status": "ok",
+        "table_count": 38,
+        "canonical_candidates": []
+      },
+      {
+        "id": 8,
+        "status": "ok",
+        "table_count": 301,
+        "canonical_candidates": []
+      },
+      {
+        "id": 13,
+        "status": "ok",
+        "table_count": 256,
+        "canonical_candidates": []
+      },
+      {
+        "id": 21,
+        "status": "ok",
+        "table_count": 351,
+        "canonical_candidates": []
+      },
+      {
+        "id": 4,
+        "status": "ok",
+        "table_count": 20,
+        "canonical_candidates": []
+      }
+    ]
+  },
+  "openrouter_smoke": {
+    "model": "openai/gpt-6-luna",
+    "catalog_verified_at": "2026-10-09T22:42:57.943Z",
+    "catalog_present": true,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_completion_tokens",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "tool_choice",
+      "tools",
+      "verbosity"
+    ],
+    "live_smoke": {
+      "status": "reviewed",
+      "reason": null,
+      "model": "openai/gpt-6-luna",
+      "tool_executions": 3,
+      "latency_ms": 6096,
+      "input_tokens": 3284,
+      "output_tokens": 217,
+      "cost": 0.00046465,
+      "programmatic_errors": [],
+      "synthetic_context": true,
+      "key_verified": true,
+      "scientific_accuracy_evaluated": false
+    }
+  },
+  "retry_audit": {
+    "observed_consecutive_sampled_pairs_after_unanswered": {
+      "later_day": 32,
+      "60_120": 54,
+      "same_day_over120": 74,
+      "0_15": 2
+    },
+    "true_retry_sequences_verified": false,
+    "completed_meeting_policy_comparison": null,
+    "rule_recommendation": "keep current rule pending randomized pilot; supplement only with verified eligibility/stop constraints",
+    "candidate_delays_minutes": [
+      15,
+      30,
+      60,
+      120,
+      1440
+    ],
+    "reason": "Full retry chains, canonical labels, production rule configuration, and propensity/overlap evidence are unavailable.",
+    "causal_lift_measured": false,
+    "configured_app_cooldown_is_assumption": true
+  },
+  "http_smoke": {
+    "started_at": "2026-10-10T00:06:08.324Z",
+    "base": "http://127.0.0.1:3104",
+    "checks": [
+      {
+        "name": "auth_origin_secret_masking_and_input_validation",
+        "status": "passed"
+      },
+      {
+        "name": "authenticated_sanitized_experiment_report",
+        "status": "passed",
+        "state": "evaluated"
+      },
+      {
+        "name": "health_reports_unavailable_models",
+        "status": "passed"
+      },
+      {
+        "name": "live_redash_lookup_prediction_and_json_export",
+        "status": "passed",
+        "returned_users": 1,
+        "window_count": 4,
+        "elapsed_ms": 4300,
+        "global_context_status": "not_configured"
+      },
+      {
+        "name": "batch_prediction_endpoint_live",
+        "status": "passed",
+        "http_status": 200
+      }
+    ]
+  },
+  "browser_smoke": {
+    "home": {
+      "title": "Callwise | Best time to call",
+      "input_labelled": true,
+      "no_horizontal_overflow": true,
+      "mobile_no_horizontal_overflow": true
+    },
+    "desktop": {
+      "recommendation_rendered": true,
+      "scoring_model": "Seller weekday/hour meeting history",
+      "model_kind": "History heuristic",
+      "top_score": "2,004,000",
+      "slot_scores": [
+        "2,004,000",
+        "1,002,000",
+        "1,002,000",
+        "3,000"
+      ],
+      "ranked_rows": 4,
+      "overall_tables": 1,
+      "daily_groups": 0,
+      "retry_time": "Thu, 15 Oct, 2:00 pm",
+      "best_time": "Thu, 15 Oct, 11:00 am",
+      "retry_delay": "Wait 2 hours after the window ends at 12:00 pm",
+      "ranks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "has_suggestion": true,
+      "no_horizontal_overflow": true
+    },
+    "mobile": {
+      "no_horizontal_overflow": true,
+      "viewport_width": 390,
+      "recommendation_rendered": true
+    },
+    "admin": null,
+    "console_errors": []
+  },
+  "inference_smoke": {
+    "checked_at": "2026-10-09T23:32:50.072Z",
+    "kind": "actual_frozen_artifact_cross_runtime_parity",
+    "checks": [
+      {
+        "model_version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+        "windows": 3,
+        "maximum_difference": 8.673617379884035e-19,
+        "status": "passed",
+        "experimental": true,
+        "canonical_label_verified": false
+      },
+      {
+        "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+        "windows": 3,
+        "maximum_difference": 4.336808689942018e-19,
+        "status": "passed",
+        "experimental": true,
+        "canonical_label_verified": false
+      }
+    ]
+  },
+  "retry_ranking_live": {
+    "checked_at": "2026-10-10T00:08:47.123Z",
+    "kind": "live_redash_retry_and_overall_weekday_ranking",
+    "sample_count": 2,
+    "checks": [
+      {
+        "prior_calls": 121,
+        "ranking_scope": "overall",
+        "ranking_strategy": "seller_meetings",
+        "preferred_weekdays": [
+          3
+        ],
+        "recommended_at": "2026-10-15T05:30:00.000Z",
+        "recommended_end": "2026-10-15T06:30:00.000Z",
+        "retry_at": "2026-10-15T08:30:00.000Z",
+        "wait_minutes": 120,
+        "minimum_wait_minutes": 60,
+        "retry_distinct": true,
+        "ranked_choices": 4,
+        "llm_status": "reviewed",
+        "llm_tools": 3,
+        "history_status": "verified"
+      },
+      {
+        "prior_calls": 141,
+        "ranking_scope": "overall",
+        "ranking_strategy": "seller_meetings",
+        "preferred_weekdays": [
+          5
+        ],
+        "recommended_at": "2026-10-10T04:30:00.000Z",
+        "recommended_end": "2026-10-10T05:30:00.000Z",
+        "retry_at": "2026-10-10T10:30:00.000Z",
+        "wait_minutes": 300,
+        "minimum_wait_minutes": 60,
+        "retry_distinct": true,
+        "ranked_choices": 4,
+        "llm_status": "reviewed",
+        "llm_tools": 3,
+        "history_status": "verified"
+      }
+    ]
+  },
+  "model_display_live": {
+    "checked_at": "2026-10-10T00:25:06.399Z",
+    "kind": "live_selected_model_metadata_and_score_display",
+    "checks": [
+      {
+        "model": {
+          "name": "Seller weekday/hour meeting history",
+          "kind": "history_heuristic",
+          "family": null,
+          "version": "seller-weekday-slot-evidence-v3",
+          "training_attempts": 0,
+          "target": null,
+          "evaluation": null,
+          "description": "Uses observed meeting and answer counts with short-call discounts; the score is ranking points."
+        },
+        "score_kind": "seller_meetings",
+        "priority_score": 2004000,
+        "proxy_estimate": null,
+        "canonical_score": null,
+        "review_status": "reviewed"
+      },
+      {
+        "model": {
+          "name": "General ERP / Smoothed hour/day",
+          "kind": "trained_ml",
+          "family": "hour_day",
+          "version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+          "training_attempts": 15284,
+          "target": "observed_linked_physical_recorded_met_within14days",
+          "evaluation": {
+            "attempts": 12000,
+            "proxy_events": 43,
+            "prevalence": 0.0035833333333333333,
+            "average_precision": 0.005208886294006922,
+            "roc_auc": 0.6431855622181032,
+            "brier": 0.0035670718929222164,
+            "log_loss": 0.023095769410330442
+          },
+          "description": "The model estimates linked ERP physical meeting records within 14 days; scores describe this proxy outcome."
+        },
+        "score_kind": "generalized_model",
+        "priority_score": 0.0065982244425276245,
+        "proxy_estimate": 0.0065982244425276245,
+        "canonical_score": null,
+        "review_status": "reviewed"
+      }
+    ]
+  },
+  "source_checks": [
+    {
+      "source": 8,
+      "name": "warehouse_meetings",
+      "status": "failed",
+      "reason": "Redash denied access (HTTP 403). Check the user API key's query permissions and access to data source 8.",
+      "grain": "DSR meeting replica; reconcile original meeting ID",
+      "role": "outcome reconciliation only"
+    },
+    {
+      "source": 55,
+      "name": "clickhouse_hotlead_mart",
+      "status": "sampled",
+      "sample_rows": 200,
+      "grain": "Reporting lead aggregate; key uniqueness unverified",
+      "role": "future outcome aggregates excluded from features",
+      "missingness": {
+        "fk_glusr_usr_id": 0,
+        "fk_hot_leads_id": 0,
+        "activity_id": 0,
+        "hot_leads_date": 0,
+        "hot_leads_time": 0,
+        "attempt_15_mins": 0,
+        "talked_15_mins": 0,
+        "meeting_14": 0,
+        "refresh_date": 0
+      },
+      "date_ranges": {
+        "hot_leads_date": [
+          "2026-06-11",
+          "2026-09-09"
+        ],
+        "refresh_date": [
+          "2026-07-01",
+          "2026-09-29"
+        ]
+      },
+      "event_time_verified": false,
+      "availability_time_verified": false,
+      "refresh_lag_verified": false,
+      "sampling": "unordered LIMIT200; not population statistics"
+    },
+    {
+      "source": 10,
+      "name": "daily_hotlead_mart",
+      "status": "failed",
+      "reason": "Redash denied access (HTTP 403). Check the user API key's query permissions and access to data source 10.",
+      "grain": "Reporting lead aggregate replica, not independent training rows",
+      "role": "reconciliation only"
+    },
+    {
+      "source": 21,
+      "name": "contact_preferences",
+      "status": "sampled",
+      "sample_rows": 200,
+      "grain": "Seller/contact/type setting snapshot; semantics unverified",
+      "role": "no automatic ERP outbound restriction until type/flag meaning verified",
+      "missingness": {
+        "fk_glusr_usr_id": 0,
+        "iil_pns_setting_type": 0,
+        "iil_pns_setting_offhrs_flag": 0,
+        "iil_pns_setting_last_update": 0
+      },
+      "date_ranges": {
+        "iil_pns_setting_last_update": [
+          "2022-01-13T02:10:51",
+          "2026-10-08T12:38:59.460"
+        ]
+      },
+      "event_time_verified": false,
+      "availability_time_verified": false,
+      "refresh_lag_verified": false,
+      "sampling": "unordered LIMIT200; not population statistics"
+    },
+    {
+      "source": 13,
+      "name": "lead_assignments",
+      "status": "sampled",
+      "sample_rows": 200,
+      "grain": "Assignment event/current markers; effective intervals unverified",
+      "role": "current DNC safety marker; outcome dates not completion labels",
+      "missingness": {
+        "hot_leads_assign_id": 0,
+        "fk_hot_leads_id": 0,
+        "fk_hot_leads_types_id": 0.15,
+        "fk_glusr_usr_id": 0,
+        "hot_leads_assign_date": 0,
+        "meeting_fixed_date": 1,
+        "first_sts_meet_date": 1,
+        "do_not_call_mark_date": 1
+      },
+      "date_ranges": {
+        "hot_leads_assign_date": [
+          "2026-09-18T00:00:03",
+          "2026-09-30T14:45:05"
+        ],
+        "meeting_fixed_date": null,
+        "first_sts_meet_date": null,
+        "do_not_call_mark_date": null
+      },
+      "event_time_verified": false,
+      "availability_time_verified": false,
+      "refresh_lag_verified": false,
+      "sampling": "unordered LIMIT200; not population statistics"
+    },
+    {
+      "source": 13,
+      "name": "category_mapping",
+      "status": "sampled",
+      "sample_rows": 200,
+      "grain": "Seller/product/category mapping; many to many",
+      "role": "snapshot excluded unless as-of membership reconstructed",
+      "missingness": {
+        "fk_glusr_usr_id": 1,
+        "fk_glcat_mcat_id": 0,
+        "fk_pc_item_id": 0,
+        "item_mapping_isprime": 1,
+        "map_date": 0
+      },
+      "date_ranges": {
+        "map_date": [
+          "2008-04-29T00:00:00",
+          "2011-05-11T00:00:00"
+        ]
+      },
+      "event_time_verified": false,
+      "availability_time_verified": false,
+      "refresh_lag_verified": false,
+      "sampling": "unordered LIMIT200; not population statistics"
+    }
+  ],
+  "authenticated_browser_qa": {
+    "home": {
+      "title": "Callwise | Best time to call",
+      "input_labelled": true,
+      "no_horizontal_overflow": true,
+      "mobile_no_horizontal_overflow": true
+    },
+    "desktop": {
+      "recommendation_rendered": true,
+      "ranked_rows": 4,
+      "overall_tables": 1,
+      "daily_groups": 0,
+      "retry_time": "Thu, 15 Oct, 2:00 pm",
+      "best_time": "Thu, 15 Oct, 11:00 am",
+      "retry_delay": "Wait 2 hours after the window ends at 12:00 pm",
+      "ranks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "has_suggestion": true,
+      "no_horizontal_overflow": true
+    },
+    "mobile": {
+      "no_horizontal_overflow": true,
+      "viewport_width": 390,
+      "recommendation_rendered": true
+    },
+    "admin": {
+      "report_rendered": true,
+      "no_horizontal_overflow": true
+    },
+    "console_errors": []
+  },
+  "active_split_manifest": {
+    "revision": 2,
+    "reason": "Pre-training embargo correction: Aug12 calls were not mature before Sep2 morning. No model fit/final scoring occurred under v1. Original manifest retained unchanged.",
+    "counts": {
+      "history": {
+        "test": 1187,
+        "train": 2278,
+        "validation": 1200
+      },
+      "cold_start": {
+        "test": 1132,
+        "train": 2162,
+        "validation": 1134
+      }
+    }
+  },
+  "operational_proxy_experiment": {
+    "state": "evaluated",
+    "target": "observed_linked_physical_recorded_met_within14days",
+    "canonical_label_verified": false,
+    "deployment_approved": false,
+    "policy_lift_measured": false,
+    "source_id": 13,
+    "attempts": 39284,
+    "sellers": 36447,
+    "proxy_events": 130,
+    "checkpoints": 786,
+    "planned_checkpoints": 800,
+    "as_of": "2026-10-09T22:48:35.713000+00:00",
+    "dataset_sha256": "b54c79c89d43853ea97db086174968c6de3ba0bfc1980f2009293c55389ef72d",
+    "models": [
+      {
+        "name": "General ERP · time only",
+        "route": "erp_outbound_observed_proxy",
+        "status": "evaluated",
+        "model_version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+        "candidate": "hour_day",
+        "trained_target": "observed_linked_physical_recorded_met_within14days",
+        "training_attempts": 15284,
+        "training_positives": 53,
+        "validation": {
+          "attempts": 12000,
+          "proxy_events": 34,
+          "prevalence": 0.0028333333333333335,
+          "average_precision": 0.006025348944103774,
+          "roc_auc": 0.7116622095938493,
+          "brier": 0.0028242643235825106,
+          "log_loss": 0.018942820458539338
+        },
+        "test": {
+          "attempts": 12000,
+          "proxy_events": 43,
+          "prevalence": 0.0035833333333333333,
+          "average_precision": 0.005208886294006922,
+          "roc_auc": 0.6431855622181032,
+          "brier": 0.0035670718929222164,
+          "log_loss": 0.023095769410330442
+        },
+        "baseline": {
+          "attempts": 12000,
+          "proxy_events": 43,
+          "prevalence": 0.0035833333333333333,
+          "average_precision": 0.005208886294006922,
+          "roc_auc": 0.6431855622181032,
+          "brier": 0.003571298697067656,
+          "log_loss": 0.023238116972438334
+        },
+        "calibrated": true,
+        "support_sufficient": true,
+        "predictive_acceptance_met": true,
+        "uncertainty": {
+          "average_precision": {
+            "lower": 0.003380677983337137,
+            "upper": 0.007496392055272596
+          }
+        },
+        "preview": [
+          {
+            "id": "2026-10-16T05:30:00.000Z",
+            "start": "2026-10-16T05:30:00.000Z",
+            "end": "2026-10-16T06:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 791,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.0065982244425276245,
+            "calibrated": true
+          },
+          {
+            "id": "2026-10-23T05:30:00.000Z",
+            "start": "2026-10-23T05:30:00.000Z",
+            "end": "2026-10-23T06:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 791,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.0065982244425276245,
+            "calibrated": true
+          },
+          {
+            "id": "2026-10-16T04:30:00.000Z",
+            "start": "2026-10-16T04:30:00.000Z",
+            "end": "2026-10-16T05:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 670,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.006302457978417896,
+            "calibrated": true
+          }
+        ],
+        "reason": null
+      },
+      {
+        "name": "First contact · observed scope",
+        "route": "cold_start_observed_scope",
+        "status": "evaluated",
+        "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+        "candidate": "logistic_metadata_False_l2_0.005",
+        "trained_target": "observed_linked_physical_recorded_met_within14days",
+        "training_attempts": 6242,
+        "training_positives": 17,
+        "validation": {
+          "attempts": 2334,
+          "proxy_events": 3,
+          "prevalence": 0.0012853470437017994,
+          "average_precision": 0.002207414996696361,
+          "roc_auc": 0.5908765908765908,
+          "brier": 0.001285735460712268,
+          "log_loss": 0.010294928399745829
+        },
+        "test": {
+          "attempts": 1364,
+          "proxy_events": 0,
+          "prevalence": 0,
+          "average_precision": null,
+          "roc_auc": null,
+          "brier": 0.000008421750687519665,
+          "log_loss": 0.002889839408916697
+        },
+        "baseline": {
+          "attempts": 1364,
+          "proxy_events": 0,
+          "prevalence": 0,
+          "average_precision": null,
+          "roc_auc": null,
+          "brier": 0.000025521263545475023,
+          "log_loss": 0.0037349160045688124
+        },
+        "calibrated": false,
+        "support_sufficient": false,
+        "predictive_acceptance_met": false,
+        "uncertainty": {
+          "average_precision": null
+        },
+        "preview": [
+          {
+            "id": "2026-10-16T04:30:00.000Z",
+            "start": "2026-10-16T04:30:00.000Z",
+            "end": "2026-10-16T05:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 267,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.0033464109181333716,
+            "calibrated": false
+          },
+          {
+            "id": "2026-10-23T04:30:00.000Z",
+            "start": "2026-10-23T04:30:00.000Z",
+            "end": "2026-10-23T05:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 267,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.0033464109181333716,
+            "calibrated": false
+          },
+          {
+            "id": "2026-10-16T05:30:00.000Z",
+            "start": "2026-10-16T05:30:00.000Z",
+            "end": "2026-10-16T06:30:00.000Z",
+            "timezone": "Asia/Kolkata",
+            "score": null,
+            "score_target": null,
+            "support": 309,
+            "uncertainty": null,
+            "outside_configured_hours": false,
+            "proxy_score": 0.0032732103524130405,
+            "calibrated": false
+          }
+        ],
+        "reason": null
+      }
+    ],
+    "limitations": [
+      "Target: a seller-linked physical recorded-met record within 14 days; canonical meeting_done remains unverified.",
+      "Current replica observations do not prove original historical availability or lifetime first-contact coverage.",
+      "Only hour and weekday enter these experimental models; present-day seller metadata is excluded.",
+      "Observed schedules and limited weekday support do not establish causal meeting lift. The general model also supplies advisory slot rankings when personal history is inconclusive; these are not canonical meeting probabilities."
+    ]
+  },
+  "proxy_models_trained": 2
+}

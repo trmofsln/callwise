@@ -1,0 +1,374 @@
+{
+  "calibration": {
+    "calibrated": false,
+    "fitted_split": "validation",
+    "independent_calibrated_validation_metrics": false,
+    "kind": "none",
+    "minimum_per_class": 20,
+    "reason": "insufficient_validation_class_support",
+    "validation_attempts": 2334,
+    "validation_negatives": 2331,
+    "validation_positives": 3,
+    "validation_reused_for_selection": true
+  },
+  "candidate": "logistic_metadata_False_l2_0.005",
+  "canonical_label_verified": false,
+  "dataset_sha256": "b54c79c89d43853ea97db086174968c6de3ba0bfc1980f2009293c55389ef72d",
+  "deployment": {
+    "approved": false,
+    "reason": "offline candidate; independent test and label/coverage review required"
+  },
+  "eligibility_policy": "observed_first_contact_proxy",
+  "environment": {
+    "packages": {
+      "numpy": "2.5.3",
+      "scikit-learn": null,
+      "tzdata": "2026.4"
+    },
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python": "3.14.5",
+    "seed": 1729
+  },
+  "evidence": {
+    "metadata_source_policy": "verified_as_of_only",
+    "training_attempts": 6242,
+    "training_positives": 17,
+    "training_sellers": 6242
+  },
+  "experimental": true,
+  "family": "logistic",
+  "feature_provenance": {
+    "account_created_at": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "business_type": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "city": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "industry": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "segment": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    },
+    "state": {
+      "accepted_training_rows": 0,
+      "availability_policy": "available_at <= original decision timestamp",
+      "historical_rows": 0,
+      "source_counts": {},
+      "verified_static_rows": 0
+    }
+  },
+  "feature_schema": {
+    "account_age_cap_days": 3650,
+    "categories": {},
+    "feature_names": [
+      "hour_sin",
+      "hour_cos",
+      "weekday_0",
+      "weekday_1",
+      "weekday_2",
+      "weekday_3",
+      "weekday_4",
+      "weekday_5",
+      "weekday_6"
+    ],
+    "interaction_fields": [],
+    "minimum_category_support": 5,
+    "schema_version": 1,
+    "timezone": "Asia/Kolkata"
+  },
+  "historical_availability_verified": false,
+  "history_scope": {
+    "availability_verified": false,
+    "complete_within_scope": true,
+    "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+    "coverage_end": "2026-09-26T00:00:00+05:30",
+    "coverage_start": "2026-05-01T00:00:00+05:30",
+    "lifetime_complete": false,
+    "population": "general_erp_employee_outbound",
+    "prior_call_search_verified": true,
+    "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+    "source_ids": [
+      13
+    ],
+    "source_tables": [
+      "redash.click_to_call"
+    ]
+  },
+  "label_kind": "proxy",
+  "lifetime_history_verified": false,
+  "logistic": {
+    "backend": "numpy",
+    "class_weight": null,
+    "coefficients": [
+      0.1258634153136842,
+      -0.08173412576822565,
+      0.0,
+      -0.022075797166671882,
+      0.041656708466850496,
+      0.0,
+      0.07841571878023036,
+      0.0,
+      -0.11167932681982837
+    ],
+    "converged": false,
+    "intercept": -5.908646108225512,
+    "iterations": 500,
+    "l2": 0.005,
+    "optimizer": "full_batch_gradient_descent"
+  },
+  "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+  "primary_target": "meeting_done",
+  "route": "cold_start_observed_scope",
+  "schema_version": 1,
+  "smoothing": {
+    "bins": {
+      "1:10": {
+        "count": 286,
+        "positive": 0
+      },
+      "1:11": {
+        "count": 281,
+        "positive": 1
+      },
+      "1:12": {
+        "count": 111,
+        "positive": 0
+      },
+      "1:13": {
+        "count": 91,
+        "positive": 0
+      },
+      "1:14": {
+        "count": 65,
+        "positive": 0
+      },
+      "1:15": {
+        "count": 121,
+        "positive": 0
+      },
+      "1:16": {
+        "count": 101,
+        "positive": 1
+      },
+      "1:17": {
+        "count": 107,
+        "positive": 1
+      },
+      "1:18": {
+        "count": 102,
+        "positive": 0
+      },
+      "1:19": {
+        "count": 52,
+        "positive": 0
+      },
+      "1:20": {
+        "count": 5,
+        "positive": 0
+      },
+      "1:21": {
+        "count": 1,
+        "positive": 0
+      },
+      "1:9": {
+        "count": 32,
+        "positive": 0
+      },
+      "2:10": {
+        "count": 358,
+        "positive": 3
+      },
+      "2:11": {
+        "count": 376,
+        "positive": 3
+      },
+      "2:12": {
+        "count": 213,
+        "positive": 1
+      },
+      "2:13": {
+        "count": 122,
+        "positive": 0
+      },
+      "2:14": {
+        "count": 99,
+        "positive": 0
+      },
+      "2:15": {
+        "count": 152,
+        "positive": 0
+      },
+      "2:16": {
+        "count": 134,
+        "positive": 0
+      },
+      "2:17": {
+        "count": 172,
+        "positive": 0
+      },
+      "2:18": {
+        "count": 221,
+        "positive": 0
+      },
+      "2:19": {
+        "count": 60,
+        "positive": 0
+      },
+      "2:20": {
+        "count": 3,
+        "positive": 0
+      },
+      "2:9": {
+        "count": 47,
+        "positive": 0
+      },
+      "4:10": {
+        "count": 267,
+        "positive": 1
+      },
+      "4:11": {
+        "count": 309,
+        "positive": 4
+      },
+      "4:12": {
+        "count": 199,
+        "positive": 1
+      },
+      "4:13": {
+        "count": 121,
+        "positive": 0
+      },
+      "4:14": {
+        "count": 85,
+        "positive": 0
+      },
+      "4:15": {
+        "count": 135,
+        "positive": 1
+      },
+      "4:16": {
+        "count": 156,
+        "positive": 0
+      },
+      "4:17": {
+        "count": 102,
+        "positive": 0
+      },
+      "4:18": {
+        "count": 72,
+        "positive": 0
+      },
+      "4:19": {
+        "count": 5,
+        "positive": 0
+      },
+      "4:20": {
+        "count": 2,
+        "positive": 0
+      },
+      "4:21": {
+        "count": 1,
+        "positive": 0
+      },
+      "4:9": {
+        "count": 22,
+        "positive": 0
+      },
+      "6:10": {
+        "count": 86,
+        "positive": 0
+      },
+      "6:11": {
+        "count": 149,
+        "positive": 0
+      },
+      "6:12": {
+        "count": 102,
+        "positive": 0
+      },
+      "6:13": {
+        "count": 130,
+        "positive": 0
+      },
+      "6:14": {
+        "count": 134,
+        "positive": 0
+      },
+      "6:15": {
+        "count": 200,
+        "positive": 0
+      },
+      "6:16": {
+        "count": 181,
+        "positive": 0
+      },
+      "6:17": {
+        "count": 107,
+        "positive": 0
+      },
+      "6:18": {
+        "count": 45,
+        "positive": 0
+      },
+      "6:19": {
+        "count": 60,
+        "positive": 0
+      },
+      "6:20": {
+        "count": 39,
+        "positive": 0
+      },
+      "6:21": {
+        "count": 7,
+        "positive": 0
+      },
+      "6:7": {
+        "count": 1,
+        "positive": 0
+      },
+      "6:8": {
+        "count": 2,
+        "positive": 0
+      },
+      "6:9": {
+        "count": 211,
+        "positive": 0
+      }
+    },
+    "cohorts": {},
+    "global": {
+      "count": 6242,
+      "positive": 17
+    },
+    "strength": 20
+  },
+  "split_sha256": "847a8152eb7fdbba15bfba9e8f3f2c7c59258c6f30ca6e787110ae467f548f0b",
+  "timezone": "Asia/Kolkata",
+  "trained_at": "2026-10-09T22:51:51.896422+00:00",
+  "trained_target": "observed_linked_physical_recorded_met_within14days",
+  "training_as_of": "2026-10-09T22:48:35.713Z"
+}

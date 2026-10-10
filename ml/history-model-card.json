@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "route": "history_aware",
+  "primary_target": "meeting_done",
+  "trained": false,
+  "artifact_status": "blocked_by_unverified_completed_meeting_labels_and_history",
+  "dataset": "4978 live hotlead attempts across 17 fixed dates, with zero linked DSR completions",
+  "held_out_metrics": null,
+  "deployment_approved": false,
+  "limitations": ["Canonical outcomes and attribution horizon remain inaccessible.", "Missing links are unknown outcomes.", "Historical outcome availability and full prehistory are unverified.", "Observational schedule data cannot establish policy lift."]
+}

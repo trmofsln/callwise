@@ -1,0 +1,2341 @@
+{
+  "generated_at": "2026-10-09T23:04:24.744Z",
+  "target": "observed_linked_physical_recorded_met_within14days",
+  "canonical_label_verified": false,
+  "policy_lift_measured": false,
+  "dataset": {
+    "attempts": 39284,
+    "sellers": 36447,
+    "proxy_events": 130,
+    "dataset_sha256": "b54c79c89d43853ea97db086174968c6de3ba0bfc1980f2009293c55389ef72d",
+    "as_of": "2026-10-09T22:48:35.713000+00:00"
+  },
+  "models": [
+    {
+      "name": "General ERP · time only",
+      "route": "erp_outbound_observed_proxy",
+      "status": "evaluated",
+      "model_version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+      "candidate": "hour_day",
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "training_attempts": 15284,
+      "training_positives": 53,
+      "validation": {
+        "attempts": 12000,
+        "proxy_events": 34,
+        "prevalence": 0.0028333333333333335,
+        "average_precision": 0.006025348944103774,
+        "roc_auc": 0.7116622095938493,
+        "brier": 0.0028242643235825106,
+        "log_loss": 0.018942820458539338
+      },
+      "test": {
+        "attempts": 12000,
+        "proxy_events": 43,
+        "prevalence": 0.0035833333333333333,
+        "average_precision": 0.005208886294006922,
+        "roc_auc": 0.6431855622181032,
+        "brier": 0.0035670718929222164,
+        "log_loss": 0.023095769410330442
+      },
+      "baseline": {
+        "attempts": 12000,
+        "proxy_events": 43,
+        "prevalence": 0.0035833333333333333,
+        "average_precision": 0.005208886294006922,
+        "roc_auc": 0.6431855622181032,
+        "brier": 0.003571298697067656,
+        "log_loss": 0.023238116972438334
+      },
+      "calibrated": true,
+      "support_sufficient": true,
+      "predictive_acceptance_met": true,
+      "uncertainty": {
+        "average_precision": {
+          "lower": 0.003380677983337137,
+          "upper": 0.007496392055272596
+        }
+      },
+      "reason": null,
+      "preview_omitted": true
+    },
+    {
+      "name": "First contact · observed scope",
+      "route": "cold_start_observed_scope",
+      "status": "evaluated",
+      "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+      "candidate": "logistic_metadata_False_l2_0.005",
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "training_attempts": 6242,
+      "training_positives": 17,
+      "validation": {
+        "attempts": 2334,
+        "proxy_events": 3,
+        "prevalence": 0.0012853470437017994,
+        "average_precision": 0.002207414996696361,
+        "roc_auc": 0.5908765908765908,
+        "brier": 0.001285735460712268,
+        "log_loss": 0.010294928399745829
+      },
+      "test": {
+        "attempts": 1364,
+        "proxy_events": 0,
+        "prevalence": 0,
+        "average_precision": null,
+        "roc_auc": null,
+        "brier": 0.000008421750687519665,
+        "log_loss": 0.002889839408916697
+      },
+      "baseline": {
+        "attempts": 1364,
+        "proxy_events": 0,
+        "prevalence": 0,
+        "average_precision": null,
+        "roc_auc": null,
+        "brier": 0.000025521263545475023,
+        "log_loss": 0.0037349160045688124
+      },
+      "calibrated": false,
+      "support_sufficient": false,
+      "predictive_acceptance_met": false,
+      "uncertainty": {
+        "average_precision": null
+      },
+      "reason": null,
+      "preview_omitted": true
+    }
+  ],
+  "tests": {
+    "general_erp": {
+      "aspirational_10pct_causal_lift_assessed": false,
+      "calibration": {
+        "calibrated": true,
+        "clip": 0.000001,
+        "converged": true,
+        "fitted_split": "validation",
+        "independent_calibrated_validation_metrics": false,
+        "input": "logit_probability",
+        "intercept": -2.675693990036005,
+        "iterations": 5,
+        "kind": "platt",
+        "meaning": "validation-fitted calibration applied; independent quality assessed only on locked test",
+        "minimum_per_class": 20,
+        "slope": 0.5217878171210185,
+        "slope_constraint": "nonnegative",
+        "slope_l2": 0.000001,
+        "target_smoothing": "positive=(n_pos+1)/(n_pos+2), negative=1/(n_neg+2)",
+        "validation_attempts": 12000,
+        "validation_negatives": 11966,
+        "validation_positives": 34,
+        "validation_reused_for_selection": true
+      },
+      "calibration_quality_assessment_split": "locked_final_test",
+      "canonical_objective_verified": false,
+      "clock_support": {
+        "by_weekday_monday_zero": {
+          "0": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3,
+              "precision": 0.00375,
+              "recall": 0.2,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.00375
+            },
+            "attempts": 4000,
+            "average_precision": 0.00375,
+            "brier": 0.0037359563797531438,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.0036125963859861654,
+                "observed_rate": 0.00375
+              }
+            ],
+            "calls_per_completed_meeting": 266.6666666666667,
+            "class_prevalence": 0.00375,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024693047847411557,
+            "majority_class_accuracy": 0.99625,
+            "meetings_per_100_attempts": 0.375,
+            "roc_auc": 0.5
+          },
+          "2": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 6.928870292887029,
+              "precision": 0.008661087866108787,
+              "recall": 0.38493723849372385,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.008661087866108787
+            },
+            "attempts": 4000,
+            "average_precision": 0.009081632962263579,
+            "brier": 0.0044706806574050925,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.003537278922628773,
+                "observed_rate": 0.0045
+              }
+            ],
+            "calls_per_completed_meeting": 222.22222222222223,
+            "class_prevalence": 0.0045,
+            "completed_meetings": 18,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.027391780434089373,
+            "majority_class_accuracy": 0.9955,
+            "meetings_per_100_attempts": 0.45,
+            "roc_auc": 0.7321139572520788
+          },
+          "4": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3.176223776223776,
+              "precision": 0.003970279720279721,
+              "recall": 0.3176223776223776,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.003970279720279721
+            },
+            "attempts": 4000,
+            "average_precision": 0.0038023987839712462,
+            "brier": 0.0024945786416084134,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.003866268689495464,
+                "observed_rate": 0.0025
+              }
+            ],
+            "calls_per_completed_meeting": 400,
+            "class_prevalence": 0.0025,
+            "completed_meetings": 10,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.017202479949490392,
+            "majority_class_accuracy": 0.9975,
+            "meetings_per_100_attempts": 0.25,
+            "roc_auc": 0.6545864661654135
+          }
+        },
+        "evaluation_policy": "all preregistered test calls retained, including unsupported weekdays; subgroup results disclosed",
+        "groups": {
+          "insufficient_slot_support": {
+            "at_call_budget": {
+              "budget": 802,
+              "expected_completed_meetings": 3.0059970014992503,
+              "precision": 0.0037481259370314842,
+              "recall": 0.20039980009995,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.0037481259370314842
+            },
+            "attempts": 4006,
+            "average_precision": 0.0037481259370314842,
+            "brier": 0.003730378897576877,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4006,
+                "mean_prediction": 0.0036123834835940947,
+                "observed_rate": 0.0037443834248627058
+              }
+            ],
+            "calls_per_completed_meeting": 267.06666666666666,
+            "class_prevalence": 0.0037443834248627058,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024661270678336473,
+            "majority_class_accuracy": 0.9962556165751373,
+            "meetings_per_100_attempts": 0.3744383424862706,
+            "roc_auc": 0.5005011275369582
+          },
+          "supported_slots": {
+            "at_call_budget": {
+              "budget": 1599,
+              "expected_completed_meetings": 6.545454545454545,
+              "precision": 0.0040934675081016544,
+              "recall": 0.23376623376623376,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.0040934675081016544
+            },
+            "attempts": 7994,
+            "average_precision": 0.005587006081402677,
+            "brier": 0.0034852345323209445,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 7994,
+                "mean_prediction": 0.0037019474302181217,
+                "observed_rate": 0.0035026269702276708
+              }
+            ],
+            "calls_per_completed_meeting": 285.5,
+            "class_prevalence": 0.0035026269702276708,
+            "completed_meetings": 28,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.02231125626551781,
+            "majority_class_accuracy": 0.9964973730297724,
+            "meetings_per_100_attempts": 0.3502626970227671,
+            "roc_auc": 0.677759944047918
+          },
+          "unseen_training_weekday": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3,
+              "precision": 0.00375,
+              "recall": 0.2,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.00375
+            },
+            "attempts": 4000,
+            "average_precision": 0.00375,
+            "brier": 0.0037359563797531438,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.0036125963859861654,
+                "observed_rate": 0.00375
+              }
+            ],
+            "calls_per_completed_meeting": 266.6666666666667,
+            "class_prevalence": 0.00375,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024693047847411557,
+            "majority_class_accuracy": 0.99625,
+            "meetings_per_100_attempts": 0.375,
+            "roc_auc": 0.5
+          }
+        },
+        "inference_policy": "slots below minimum training support return null rather than an observed-supported recommendation",
+        "minimum_slot_support": 5,
+        "training_weekdays_monday_zero": [
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      "cohorts": {
+        "city": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 2400,
+              "expected_completed_meetings": 14.523012552301255,
+              "precision": 0.006051255230125523,
+              "recall": 0.3377444779604943,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.006051255230125523
+            },
+            "attempts": 12000,
+            "average_precision": 0.005208886294006922,
+            "brier": 0.0035670718929222164,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 12000,
+                "mean_prediction": 0.0036720479993701343,
+                "observed_rate": 0.0035833333333333333
+              }
+            ],
+            "calls_per_completed_meeting": 279.06976744186045,
+            "class_prevalence": 0.0035833333333333333,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.023095769410330442,
+            "majority_class_accuracy": 0.9964166666666666,
+            "meetings_per_100_attempts": 0.35833333333333334,
+            "roc_auc": 0.6431855622181032
+          }
+        },
+        "industry": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 2400,
+              "expected_completed_meetings": 14.523012552301255,
+              "precision": 0.006051255230125523,
+              "recall": 0.3377444779604943,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.006051255230125523
+            },
+            "attempts": 12000,
+            "average_precision": 0.005208886294006922,
+            "brier": 0.0035670718929222164,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 12000,
+                "mean_prediction": 0.0036720479993701343,
+                "observed_rate": 0.0035833333333333333
+              }
+            ],
+            "calls_per_completed_meeting": 279.06976744186045,
+            "class_prevalence": 0.0035833333333333333,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.023095769410330442,
+            "majority_class_accuracy": 0.9964166666666666,
+            "meetings_per_100_attempts": 0.35833333333333334,
+            "roc_auc": 0.6431855622181032
+          }
+        },
+        "segment": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 2400,
+              "expected_completed_meetings": 14.523012552301255,
+              "precision": 0.006051255230125523,
+              "recall": 0.3377444779604943,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.006051255230125523
+            },
+            "attempts": 12000,
+            "average_precision": 0.005208886294006922,
+            "brier": 0.0035670718929222164,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 12000,
+                "mean_prediction": 0.0036720479993701343,
+                "observed_rate": 0.0035833333333333333
+              }
+            ],
+            "calls_per_completed_meeting": 279.06976744186045,
+            "class_prevalence": 0.0035833333333333333,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.023095769410330442,
+            "majority_class_accuracy": 0.9964166666666666,
+            "meetings_per_100_attempts": 0.35833333333333334,
+            "roc_auc": 0.6431855622181032
+          }
+        },
+        "state": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 2400,
+              "expected_completed_meetings": 14.523012552301255,
+              "precision": 0.006051255230125523,
+              "recall": 0.3377444779604943,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.006051255230125523
+            },
+            "attempts": 12000,
+            "average_precision": 0.005208886294006922,
+            "brier": 0.0035670718929222164,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 12000,
+                "mean_prediction": 0.0036720479993701343,
+                "observed_rate": 0.0035833333333333333
+              }
+            ],
+            "calls_per_completed_meeting": 279.06976744186045,
+            "class_prevalence": 0.0035833333333333333,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.023095769410330442,
+            "majority_class_accuracy": 0.9964166666666666,
+            "meetings_per_100_attempts": 0.35833333333333334,
+            "roc_auc": 0.6431855622181032
+          }
+        }
+      },
+      "deployment_approved": false,
+      "deployment_reason": "requires verified label/first-contact coverage and prospective policy review",
+      "eligibility_policy": "general_erp_observed_proxy",
+      "evaluated_at": "2026-10-09T22:56:45.397438+00:00",
+      "experimental": true,
+      "historical_availability_verified": false,
+      "history_scope": {
+        "availability_verified": false,
+        "complete_within_scope": true,
+        "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+        "coverage_end": "2026-09-26T00:00:00+05:30",
+        "coverage_start": "2026-05-01T00:00:00+05:30",
+        "lifetime_complete": false,
+        "population": "general_erp_employee_outbound",
+        "prior_call_search_verified": true,
+        "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+        "source_ids": [
+          13
+        ],
+        "source_tables": [
+          "redash.click_to_call"
+        ]
+      },
+      "hour_day_baseline_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.523012552301255,
+          "precision": 0.006051255230125523,
+          "recall": 0.3377444779604943,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051255230125523
+        },
+        "attempts": 12000,
+        "average_precision": 0.005208886294006922,
+        "brier": 0.003571298697067656,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0043885082893851835,
+            "observed_rate": 0.0035833333333333333
+          }
+        ],
+        "calls_per_completed_meeting": 279.06976744186045,
+        "class_prevalence": 0.0035833333333333333,
+        "completed_meetings": 43,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.023238116972438334,
+        "majority_class_accuracy": 0.9964166666666666,
+        "meetings_per_100_attempts": 0.35833333333333334,
+        "roc_auc": 0.6431855622181032
+      },
+      "label_kind": "proxy",
+      "lifetime_history_verified": false,
+      "link_coverage": {
+        "groups": {
+          "matched_dsr": {
+            "at_call_budget": {
+              "budget": 696,
+              "expected_completed_meetings": 12.642857142857142,
+              "precision": 0.01816502463054187,
+              "recall": 0.29401993355481726,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.01816502463054187
+            },
+            "attempts": 3479,
+            "average_precision": 0.01717634048649267,
+            "brier": 0.012263589273478348,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 3479,
+                "mean_prediction": 0.003737163675458402,
+                "observed_rate": 0.012359873526875538
+              }
+            ],
+            "calls_per_completed_meeting": 80.90697674418605,
+            "class_prevalence": 0.012359873526875538,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.07071460121325863,
+            "majority_class_accuracy": 0.9876401264731245,
+            "meetings_per_100_attempts": 1.235987352687554,
+            "roc_auc": 0.6329290413406611
+          },
+          "no_matched_dsr": {
+            "at_call_budget": {
+              "budget": 1705,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 8521,
+            "average_precision": null,
+            "brier": 0.00001641070679913431,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 8521,
+                "mean_prediction": 0.003645462218697551,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0036536950244148002,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unknown_link_coverage": {
+            "at_call_budget": {
+              "budget": 0,
+              "precision": null,
+              "recall": null,
+              "yield": null
+            },
+            "attempts": 0,
+            "average_precision": null,
+            "brier": null,
+            "budget_fraction": 0.2,
+            "calls_per_completed_meeting": null,
+            "class_prevalence": null,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": null,
+            "majority_class_accuracy": null,
+            "meetings_per_100_attempts": null,
+            "roc_auc": null
+          }
+        },
+        "interpretation": "observed absence and label-source coverage can affect rates; unmatched calls are not verified canonical completion negatives",
+        "matched_only_is_sensitivity": true,
+        "used_as_feature": false
+      },
+      "metadata_coverage": {},
+      "model_sha256": "6c41f75376caace11e8cd7970150e989fa9338137890928f6f98a69ffd182ee2",
+      "model_version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+      "policy_lift_measured": false,
+      "predictive_acceptance_met": true,
+      "primary_target": "meeting_done",
+      "route": "erp_outbound_observed_proxy",
+      "secondary_labels": {
+        "connected": {
+          "observed": 12000,
+          "positive": 4750
+        },
+        "meeting_fixed": {
+          "observed": 0,
+          "positive": 0
+        }
+      },
+      "selected_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.523012552301255,
+          "precision": 0.006051255230125523,
+          "recall": 0.3377444779604943,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051255230125523
+        },
+        "attempts": 12000,
+        "average_precision": 0.005208886294006922,
+        "brier": 0.0035670718929222164,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0036720479993701343,
+            "observed_rate": 0.0035833333333333333
+          }
+        ],
+        "calls_per_completed_meeting": 279.06976744186045,
+        "class_prevalence": 0.0035833333333333333,
+        "completed_meetings": 43,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.023095769410330442,
+        "majority_class_accuracy": 0.9964166666666666,
+        "meetings_per_100_attempts": 0.35833333333333334,
+        "roc_auc": 0.6431855622181032
+      },
+      "selected_raw_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.523012552301255,
+          "precision": 0.006051255230125523,
+          "recall": 0.3377444779604943,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051255230125523
+        },
+        "attempts": 12000,
+        "average_precision": 0.005208886294006922,
+        "brier": 0.003571298697067656,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0043885082893851835,
+            "observed_rate": 0.0035833333333333333
+          }
+        ],
+        "calls_per_completed_meeting": 279.06976744186045,
+        "class_prevalence": 0.0035833333333333333,
+        "completed_meetings": 43,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.023238116972438334,
+        "majority_class_accuracy": 0.9964166666666666,
+        "meetings_per_100_attempts": 0.35833333333333334,
+        "roc_auc": 0.6431855622181032
+      },
+      "split": "chronological_general_erp_final_test",
+      "support_sufficient": true,
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "uncertainty": {
+        "clusters": 11811,
+        "intervals": {
+          "average_precision": {
+            "lower": 0.003380677983337137,
+            "upper": 0.007496392055272596
+          },
+          "brier": {
+            "lower": 0.00258398607175542,
+            "upper": 0.004560620404724722
+          },
+          "log_loss": {
+            "lower": 0.018005330072179034,
+            "upper": 0.028683250452029435
+          },
+          "yield_at_budget_difference": {
+            "lower": 0,
+            "upper": 0
+          },
+          "yield_at_call_budget": {
+            "lower": 0.003021340756205057,
+            "upper": 0.008843681311101505
+          }
+        },
+        "method": "seller_cluster_percentile",
+        "repeats": 300,
+        "seed": 1729
+      }
+    },
+    "cold_start": {
+      "aspirational_10pct_causal_lift_assessed": false,
+      "calibration": {
+        "calibrated": false,
+        "fitted_split": "validation",
+        "independent_calibrated_validation_metrics": false,
+        "kind": "none",
+        "minimum_per_class": 20,
+        "reason": "insufficient_validation_class_support",
+        "validation_attempts": 2334,
+        "validation_negatives": 2331,
+        "validation_positives": 3,
+        "validation_reused_for_selection": true
+      },
+      "calibration_quality_assessment_split": "locked_final_test",
+      "canonical_objective_verified": false,
+      "clock_support": {
+        "by_weekday_monday_zero": {
+          "0": {
+            "at_call_budget": {
+              "budget": 83,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 414,
+            "average_precision": null,
+            "brier": 0.000007588532831588858,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 414,
+                "mean_prediction": 0.0027400913083894607,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027438926664979852,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "2": {
+            "at_call_budget": {
+              "budget": 88,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 437,
+            "average_precision": null,
+            "brier": 0.000008299172480878622,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 437,
+                "mean_prediction": 0.00286617499791921,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0028703326902520658,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "4": {
+            "at_call_budget": {
+              "budget": 103,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 513,
+            "average_precision": null,
+            "brier": 0.000009198590587436798,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 513,
+                "mean_prediction": 0.0030196290907670087,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.003024237824935782,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "evaluation_policy": "all preregistered test calls retained, including unsupported weekdays; subgroup results disclosed",
+        "groups": {
+          "insufficient_slot_support": {
+            "at_call_budget": {
+              "budget": 84,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 417,
+            "average_precision": null,
+            "brier": 0.000007579170722640334,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 417,
+                "mean_prediction": 0.0027384129092064,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027422095731460556,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "supported_slots": {
+            "at_call_budget": {
+              "budget": 190,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 947,
+            "average_precision": null,
+            "brier": 0.000008792770587577405,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 947,
+                "mean_prediction": 0.0029504411997764925,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0029548464221335474,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unseen_training_weekday": {
+            "at_call_budget": {
+              "budget": 83,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 414,
+            "average_precision": null,
+            "brier": 0.000007588532831588858,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 414,
+                "mean_prediction": 0.0027400913083894607,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027438926664979852,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "inference_policy": "slots below minimum training support return null rather than an observed-supported recommendation",
+        "minimum_slot_support": 5,
+        "training_weekdays_monday_zero": [
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      "cohorts": {
+        "city": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 273,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 1364,
+            "average_precision": null,
+            "brier": 0.000008421750687519665,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 1364,
+                "mean_prediction": 0.0028856202341110025,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002889839408916697,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "industry": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 273,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 1364,
+            "average_precision": null,
+            "brier": 0.000008421750687519665,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 1364,
+                "mean_prediction": 0.0028856202341110025,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002889839408916697,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "segment": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 273,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 1364,
+            "average_precision": null,
+            "brier": 0.000008421750687519665,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 1364,
+                "mean_prediction": 0.0028856202341110025,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002889839408916697,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "state": {
+          "__missing__": {
+            "at_call_budget": {
+              "budget": 273,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 1364,
+            "average_precision": null,
+            "brier": 0.000008421750687519665,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 1364,
+                "mean_prediction": 0.0028856202341110025,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002889839408916697,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        }
+      },
+      "deployment_approved": false,
+      "deployment_reason": "requires verified label/first-contact coverage and prospective policy review",
+      "eligibility_policy": "observed_first_contact_proxy",
+      "evaluated_at": "2026-10-09T22:56:05.261307+00:00",
+      "experimental": true,
+      "historical_availability_verified": false,
+      "history_scope": {
+        "availability_verified": false,
+        "complete_within_scope": true,
+        "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+        "coverage_end": "2026-09-26T00:00:00+05:30",
+        "coverage_start": "2026-05-01T00:00:00+05:30",
+        "lifetime_complete": false,
+        "population": "general_erp_employee_outbound",
+        "prior_call_search_verified": true,
+        "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+        "source_ids": [
+          13
+        ],
+        "source_tables": [
+          "redash.click_to_call"
+        ]
+      },
+      "hour_day_baseline_metrics": {
+        "at_call_budget": {
+          "budget": 273,
+          "expected_completed_meetings": 0,
+          "precision": 0,
+          "recall": null,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0
+        },
+        "attempts": 1364,
+        "average_precision": null,
+        "brier": 0.000025521263545475023,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 1364,
+            "mean_prediction": 0.0037220785666882317,
+            "observed_rate": 0
+          }
+        ],
+        "calls_per_completed_meeting": null,
+        "class_prevalence": 0,
+        "completed_meetings": 0,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.0037349160045688124,
+        "majority_class_accuracy": 1,
+        "meetings_per_100_attempts": 0,
+        "roc_auc": null
+      },
+      "label_kind": "proxy",
+      "lifetime_history_verified": false,
+      "link_coverage": {
+        "groups": {
+          "matched_dsr": {
+            "at_call_budget": {
+              "budget": 117,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 581,
+            "average_precision": null,
+            "brier": 0.00000846774435300841,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 581,
+                "mean_prediction": 0.0028935512435809144,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0028977934824176593,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "no_matched_dsr": {
+            "at_call_budget": {
+              "budget": 157,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 783,
+            "average_precision": null,
+            "brier": 0.000008387622565362626,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 783,
+                "mean_prediction": 0.002879735283278283,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002883937344160555,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unknown_link_coverage": {
+            "at_call_budget": {
+              "budget": 0,
+              "precision": null,
+              "recall": null,
+              "yield": null
+            },
+            "attempts": 0,
+            "average_precision": null,
+            "brier": null,
+            "budget_fraction": 0.2,
+            "calls_per_completed_meeting": null,
+            "class_prevalence": null,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": null,
+            "majority_class_accuracy": null,
+            "meetings_per_100_attempts": null,
+            "roc_auc": null
+          }
+        },
+        "interpretation": "observed absence and label-source coverage can affect rates; unmatched calls are not verified canonical completion negatives",
+        "matched_only_is_sensitivity": true,
+        "used_as_feature": false
+      },
+      "metadata_coverage": {},
+      "model_sha256": "30fd0614d55d6ea871283d7389b0090aca4c0dd18be2026811e82e2154e7b991",
+      "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+      "policy_lift_measured": false,
+      "predictive_acceptance_met": false,
+      "primary_target": "meeting_done",
+      "route": "cold_start_observed_scope",
+      "secondary_labels": {
+        "connected": {
+          "observed": 1364,
+          "positive": 724
+        },
+        "meeting_fixed": {
+          "observed": 0,
+          "positive": 0
+        }
+      },
+      "selected_metrics": {
+        "at_call_budget": {
+          "budget": 273,
+          "expected_completed_meetings": 0,
+          "precision": 0,
+          "recall": null,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0
+        },
+        "attempts": 1364,
+        "average_precision": null,
+        "brier": 0.000008421750687519665,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 1364,
+            "mean_prediction": 0.0028856202341110025,
+            "observed_rate": 0
+          }
+        ],
+        "calls_per_completed_meeting": null,
+        "class_prevalence": 0,
+        "completed_meetings": 0,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.002889839408916697,
+        "majority_class_accuracy": 1,
+        "meetings_per_100_attempts": 0,
+        "roc_auc": null
+      },
+      "selected_raw_metrics": {
+        "at_call_budget": {
+          "budget": 273,
+          "expected_completed_meetings": 0,
+          "precision": 0,
+          "recall": null,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0
+        },
+        "attempts": 1364,
+        "average_precision": null,
+        "brier": 0.000008421750687519665,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 1364,
+            "mean_prediction": 0.0028856202341110025,
+            "observed_rate": 0
+          }
+        ],
+        "calls_per_completed_meeting": null,
+        "class_prevalence": 0,
+        "completed_meetings": 0,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.002889839408916697,
+        "majority_class_accuracy": 1,
+        "meetings_per_100_attempts": 0,
+        "roc_auc": null
+      },
+      "split": "seller_disjoint_chronological_final_test",
+      "support_sufficient": false,
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "uncertainty": {
+        "clusters": 1364,
+        "intervals": {
+          "brier": {
+            "lower": 0.00000833094776927163,
+            "upper": 0.000008510529162256639
+          },
+          "log_loss": {
+            "lower": 0.002873519045677213,
+            "upper": 0.002905445609943878
+          },
+          "yield_at_budget_difference": {
+            "lower": 0,
+            "upper": 0
+          },
+          "yield_at_call_budget": {
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        "method": "seller_cluster_percentile",
+        "repeats": 300,
+        "seed": 1729
+      }
+    }
+  },
+  "cards": {
+    "general_erp": {
+      "artifact_status": "offline_final_evaluated",
+      "baseline_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.523012552301255,
+          "precision": 0.006051255230125523,
+          "recall": 0.3377444779604943,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051255230125523
+        },
+        "attempts": 12000,
+        "average_precision": 0.005208886294006922,
+        "brier": 0.003571298697067656,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0043885082893851835,
+            "observed_rate": 0.0035833333333333333
+          }
+        ],
+        "calls_per_completed_meeting": 279.06976744186045,
+        "class_prevalence": 0.0035833333333333333,
+        "completed_meetings": 43,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.023238116972438334,
+        "majority_class_accuracy": 0.9964166666666666,
+        "meetings_per_100_attempts": 0.35833333333333334,
+        "roc_auc": 0.6431855622181032
+      },
+      "calibration": {
+        "calibrated": true,
+        "clip": 0.000001,
+        "converged": true,
+        "fitted_split": "validation",
+        "independent_calibrated_validation_metrics": false,
+        "input": "logit_probability",
+        "intercept": -2.675693990036005,
+        "iterations": 5,
+        "kind": "platt",
+        "meaning": "validation-fitted calibration applied; independent quality assessed only on locked test",
+        "minimum_per_class": 20,
+        "slope": 0.5217878171210185,
+        "slope_constraint": "nonnegative",
+        "slope_l2": 0.000001,
+        "target_smoothing": "positive=(n_pos+1)/(n_pos+2), negative=1/(n_neg+2)",
+        "validation_attempts": 12000,
+        "validation_negatives": 11966,
+        "validation_positives": 34,
+        "validation_reused_for_selection": true
+      },
+      "canonical_label_verified": false,
+      "clock_support": {
+        "by_weekday_monday_zero": {
+          "0": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3,
+              "precision": 0.00375,
+              "recall": 0.2,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.00375
+            },
+            "attempts": 4000,
+            "average_precision": 0.00375,
+            "brier": 0.0037359563797531438,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.0036125963859861654,
+                "observed_rate": 0.00375
+              }
+            ],
+            "calls_per_completed_meeting": 266.6666666666667,
+            "class_prevalence": 0.00375,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024693047847411557,
+            "majority_class_accuracy": 0.99625,
+            "meetings_per_100_attempts": 0.375,
+            "roc_auc": 0.5
+          },
+          "2": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 6.928870292887029,
+              "precision": 0.008661087866108787,
+              "recall": 0.38493723849372385,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.008661087866108787
+            },
+            "attempts": 4000,
+            "average_precision": 0.009081632962263579,
+            "brier": 0.0044706806574050925,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.003537278922628773,
+                "observed_rate": 0.0045
+              }
+            ],
+            "calls_per_completed_meeting": 222.22222222222223,
+            "class_prevalence": 0.0045,
+            "completed_meetings": 18,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.027391780434089373,
+            "majority_class_accuracy": 0.9955,
+            "meetings_per_100_attempts": 0.45,
+            "roc_auc": 0.7321139572520788
+          },
+          "4": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3.176223776223776,
+              "precision": 0.003970279720279721,
+              "recall": 0.3176223776223776,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.003970279720279721
+            },
+            "attempts": 4000,
+            "average_precision": 0.0038023987839712462,
+            "brier": 0.0024945786416084134,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.003866268689495464,
+                "observed_rate": 0.0025
+              }
+            ],
+            "calls_per_completed_meeting": 400,
+            "class_prevalence": 0.0025,
+            "completed_meetings": 10,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.017202479949490392,
+            "majority_class_accuracy": 0.9975,
+            "meetings_per_100_attempts": 0.25,
+            "roc_auc": 0.6545864661654135
+          }
+        },
+        "evaluation_policy": "all preregistered test calls retained, including unsupported weekdays; subgroup results disclosed",
+        "groups": {
+          "insufficient_slot_support": {
+            "at_call_budget": {
+              "budget": 802,
+              "expected_completed_meetings": 3.0059970014992503,
+              "precision": 0.0037481259370314842,
+              "recall": 0.20039980009995,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.0037481259370314842
+            },
+            "attempts": 4006,
+            "average_precision": 0.0037481259370314842,
+            "brier": 0.003730378897576877,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4006,
+                "mean_prediction": 0.0036123834835940947,
+                "observed_rate": 0.0037443834248627058
+              }
+            ],
+            "calls_per_completed_meeting": 267.06666666666666,
+            "class_prevalence": 0.0037443834248627058,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024661270678336473,
+            "majority_class_accuracy": 0.9962556165751373,
+            "meetings_per_100_attempts": 0.3744383424862706,
+            "roc_auc": 0.5005011275369582
+          },
+          "supported_slots": {
+            "at_call_budget": {
+              "budget": 1599,
+              "expected_completed_meetings": 6.545454545454545,
+              "precision": 0.0040934675081016544,
+              "recall": 0.23376623376623376,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.0040934675081016544
+            },
+            "attempts": 7994,
+            "average_precision": 0.005587006081402677,
+            "brier": 0.0034852345323209445,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 7994,
+                "mean_prediction": 0.0037019474302181217,
+                "observed_rate": 0.0035026269702276708
+              }
+            ],
+            "calls_per_completed_meeting": 285.5,
+            "class_prevalence": 0.0035026269702276708,
+            "completed_meetings": 28,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.02231125626551781,
+            "majority_class_accuracy": 0.9964973730297724,
+            "meetings_per_100_attempts": 0.3502626970227671,
+            "roc_auc": 0.677759944047918
+          },
+          "unseen_training_weekday": {
+            "at_call_budget": {
+              "budget": 800,
+              "expected_completed_meetings": 3,
+              "precision": 0.00375,
+              "recall": 0.2,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.00375
+            },
+            "attempts": 4000,
+            "average_precision": 0.00375,
+            "brier": 0.0037359563797531438,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 4000,
+                "mean_prediction": 0.0036125963859861654,
+                "observed_rate": 0.00375
+              }
+            ],
+            "calls_per_completed_meeting": 266.6666666666667,
+            "class_prevalence": 0.00375,
+            "completed_meetings": 15,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.024693047847411557,
+            "majority_class_accuracy": 0.99625,
+            "meetings_per_100_attempts": 0.375,
+            "roc_auc": 0.5
+          }
+        },
+        "inference_policy": "slots below minimum training support return null rather than an observed-supported recommendation",
+        "minimum_slot_support": 5,
+        "training_weekdays_monday_zero": [
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      "deployment_approved": false,
+      "eligibility_policy": "general_erp_observed_proxy",
+      "experimental": true,
+      "family": "hour_day",
+      "feature_provenance": {
+        "account_created_at": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "business_type": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "city": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "industry": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "segment": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "state": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        }
+      },
+      "final_result_sha256": "e528eba8282d3c1abbcf324f48977b8407783686ee9e28b05a6b26610d34f675",
+      "final_test_evaluations": 1,
+      "frozen_model_sha256": "6c41f75376caace11e8cd7970150e989fa9338137890928f6f98a69ffd182ee2",
+      "held_out_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.523012552301255,
+          "precision": 0.006051255230125523,
+          "recall": 0.3377444779604943,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051255230125523
+        },
+        "attempts": 12000,
+        "average_precision": 0.005208886294006922,
+        "brier": 0.0035670718929222164,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0036720479993701343,
+            "observed_rate": 0.0035833333333333333
+          }
+        ],
+        "calls_per_completed_meeting": 279.06976744186045,
+        "class_prevalence": 0.0035833333333333333,
+        "completed_meetings": 43,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.023095769410330442,
+        "majority_class_accuracy": 0.9964166666666666,
+        "meetings_per_100_attempts": 0.35833333333333334,
+        "roc_auc": 0.6431855622181032
+      },
+      "historical_availability_verified": false,
+      "history_scope": {
+        "availability_verified": false,
+        "complete_within_scope": true,
+        "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+        "coverage_end": "2026-09-26T00:00:00+05:30",
+        "coverage_start": "2026-05-01T00:00:00+05:30",
+        "lifetime_complete": false,
+        "population": "general_erp_employee_outbound",
+        "prior_call_search_verified": true,
+        "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+        "source_ids": [
+          13
+        ],
+        "source_tables": [
+          "redash.click_to_call"
+        ]
+      },
+      "label_kind": "proxy",
+      "lifetime_history_verified": false,
+      "limitations": [
+        "Complete-history and label verification depend on extraction evidence.",
+        "Observational schedules do not identify causal policy lift.",
+        "Calibration reuses selection validation; its independent quality is assessed only on final test.",
+        "The named target measures linked physical meeting recording, not verified canonical completion.",
+        "Its zero class is observed snapshot absence; unrecorded, missing-link and revised meetings can differ.",
+        "Current-replica prior-call search does not establish lifetime or original decision-time availability.",
+        "Per-row extraction times form an assembled observation bundle, not a transactional database snapshot.",
+        "Fixed sampled dates omit training weekday support for some future/test calls; sparse slots return null."
+      ],
+      "link_coverage": {
+        "groups": {
+          "matched_dsr": {
+            "at_call_budget": {
+              "budget": 696,
+              "expected_completed_meetings": 12.642857142857142,
+              "precision": 0.01816502463054187,
+              "recall": 0.29401993355481726,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0.01816502463054187
+            },
+            "attempts": 3479,
+            "average_precision": 0.01717634048649267,
+            "brier": 0.012263589273478348,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 3479,
+                "mean_prediction": 0.003737163675458402,
+                "observed_rate": 0.012359873526875538
+              }
+            ],
+            "calls_per_completed_meeting": 80.90697674418605,
+            "class_prevalence": 0.012359873526875538,
+            "completed_meetings": 43,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.07071460121325863,
+            "majority_class_accuracy": 0.9876401264731245,
+            "meetings_per_100_attempts": 1.235987352687554,
+            "roc_auc": 0.6329290413406611
+          },
+          "no_matched_dsr": {
+            "at_call_budget": {
+              "budget": 1705,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 8521,
+            "average_precision": null,
+            "brier": 0.00001641070679913431,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 8521,
+                "mean_prediction": 0.003645462218697551,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0036536950244148002,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unknown_link_coverage": {
+            "at_call_budget": {
+              "budget": 0,
+              "precision": null,
+              "recall": null,
+              "yield": null
+            },
+            "attempts": 0,
+            "average_precision": null,
+            "brier": null,
+            "budget_fraction": 0.2,
+            "calls_per_completed_meeting": null,
+            "class_prevalence": null,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": null,
+            "majority_class_accuracy": null,
+            "meetings_per_100_attempts": null,
+            "roc_auc": null
+          }
+        },
+        "interpretation": "observed absence and label-source coverage can affect rates; unmatched calls are not verified canonical completion negatives",
+        "matched_only_is_sensitivity": true,
+        "used_as_feature": false
+      },
+      "model_version": "erp-outbound-observed-proxy-proxy-b54c79c89d43-df1aa17e",
+      "policy_lift_measured": false,
+      "predictive_acceptance_met": true,
+      "primary_target": "meeting_done",
+      "route": "erp_outbound_observed_proxy",
+      "schema_version": 1,
+      "selected_candidate": "hour_day",
+      "sequence_identity": "unavailable; synthetic erp-seller grouping is not a lead/retry chain",
+      "support_sufficient": true,
+      "test_completed_at": "2026-10-09T22:56:45.397438+00:00",
+      "test_uncertainty": {
+        "clusters": 11811,
+        "intervals": {
+          "average_precision": {
+            "lower": 0.003380677983337137,
+            "upper": 0.007496392055272596
+          },
+          "brier": {
+            "lower": 0.00258398607175542,
+            "upper": 0.004560620404724722
+          },
+          "log_loss": {
+            "lower": 0.018005330072179034,
+            "upper": 0.028683250452029435
+          },
+          "yield_at_budget_difference": {
+            "lower": 0,
+            "upper": 0
+          },
+          "yield_at_call_budget": {
+            "lower": 0.003021340756205057,
+            "upper": 0.008843681311101505
+          }
+        },
+        "method": "seller_cluster_percentile",
+        "repeats": 300,
+        "seed": 1729
+      },
+      "trained": true,
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "training_attempts": 15284,
+      "training_evidence": {
+        "metadata_source_policy": "verified_as_of_only",
+        "training_attempts": 15284,
+        "training_positives": 53,
+        "training_sellers": 14345
+      },
+      "training_proxy_positives": 53,
+      "validation_metrics": {
+        "at_call_budget": {
+          "budget": 2400,
+          "expected_completed_meetings": 14.524193548387096,
+          "precision": 0.006051747311827956,
+          "recall": 0.4271821631878558,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.006051747311827956
+        },
+        "attempts": 12000,
+        "average_precision": 0.006025348944103774,
+        "brier": 0.0028242643235825106,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 12000,
+            "mean_prediction": 0.0033598256207478315,
+            "observed_rate": 0.0028333333333333335
+          }
+        ],
+        "calls_per_completed_meeting": 352.94117647058823,
+        "class_prevalence": 0.0028333333333333335,
+        "completed_meetings": 34,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.018942820458539338,
+        "majority_class_accuracy": 0.9971666666666666,
+        "meetings_per_100_attempts": 0.2833333333333333,
+        "roc_auc": 0.7116622095938493
+      },
+      "validation_metrics_kind": "raw_before_calibration_fit"
+    },
+    "cold_start": {
+      "artifact_status": "offline_final_evaluated",
+      "baseline_metrics": {
+        "at_call_budget": {
+          "budget": 273,
+          "expected_completed_meetings": 0,
+          "precision": 0,
+          "recall": null,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0
+        },
+        "attempts": 1364,
+        "average_precision": null,
+        "brier": 0.000025521263545475023,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 1364,
+            "mean_prediction": 0.0037220785666882317,
+            "observed_rate": 0
+          }
+        ],
+        "calls_per_completed_meeting": null,
+        "class_prevalence": 0,
+        "completed_meetings": 0,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.0037349160045688124,
+        "majority_class_accuracy": 1,
+        "meetings_per_100_attempts": 0,
+        "roc_auc": null
+      },
+      "calibration": {
+        "calibrated": false,
+        "fitted_split": "validation",
+        "independent_calibrated_validation_metrics": false,
+        "kind": "none",
+        "minimum_per_class": 20,
+        "reason": "insufficient_validation_class_support",
+        "validation_attempts": 2334,
+        "validation_negatives": 2331,
+        "validation_positives": 3,
+        "validation_reused_for_selection": true
+      },
+      "canonical_label_verified": false,
+      "clock_support": {
+        "by_weekday_monday_zero": {
+          "0": {
+            "at_call_budget": {
+              "budget": 83,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 414,
+            "average_precision": null,
+            "brier": 0.000007588532831588858,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 414,
+                "mean_prediction": 0.0027400913083894607,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027438926664979852,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "2": {
+            "at_call_budget": {
+              "budget": 88,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 437,
+            "average_precision": null,
+            "brier": 0.000008299172480878622,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 437,
+                "mean_prediction": 0.00286617499791921,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0028703326902520658,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "4": {
+            "at_call_budget": {
+              "budget": 103,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 513,
+            "average_precision": null,
+            "brier": 0.000009198590587436798,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 513,
+                "mean_prediction": 0.0030196290907670087,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.003024237824935782,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "evaluation_policy": "all preregistered test calls retained, including unsupported weekdays; subgroup results disclosed",
+        "groups": {
+          "insufficient_slot_support": {
+            "at_call_budget": {
+              "budget": 84,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 417,
+            "average_precision": null,
+            "brier": 0.000007579170722640334,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 417,
+                "mean_prediction": 0.0027384129092064,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027422095731460556,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "supported_slots": {
+            "at_call_budget": {
+              "budget": 190,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 947,
+            "average_precision": null,
+            "brier": 0.000008792770587577405,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 947,
+                "mean_prediction": 0.0029504411997764925,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0029548464221335474,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unseen_training_weekday": {
+            "at_call_budget": {
+              "budget": 83,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 414,
+            "average_precision": null,
+            "brier": 0.000007588532831588858,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 414,
+                "mean_prediction": 0.0027400913083894607,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0027438926664979852,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          }
+        },
+        "inference_policy": "slots below minimum training support return null rather than an observed-supported recommendation",
+        "minimum_slot_support": 5,
+        "training_weekdays_monday_zero": [
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      "deployment_approved": false,
+      "eligibility_policy": "observed_first_contact_proxy",
+      "experimental": true,
+      "family": "logistic",
+      "feature_provenance": {
+        "account_created_at": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "business_type": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "city": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "industry": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "segment": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        },
+        "state": {
+          "accepted_training_rows": 0,
+          "availability_policy": "available_at <= original decision timestamp",
+          "historical_rows": 0,
+          "source_counts": {},
+          "verified_static_rows": 0
+        }
+      },
+      "final_result_sha256": "0e7188eeebce28baa10d499d7f45e03ea6b54d541fd358a52e9311d691e5b80f",
+      "final_test_evaluations": 1,
+      "frozen_model_sha256": "30fd0614d55d6ea871283d7389b0090aca4c0dd18be2026811e82e2154e7b991",
+      "held_out_metrics": {
+        "at_call_budget": {
+          "budget": 273,
+          "expected_completed_meetings": 0,
+          "precision": 0,
+          "recall": null,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0
+        },
+        "attempts": 1364,
+        "average_precision": null,
+        "brier": 0.000008421750687519665,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 1364,
+            "mean_prediction": 0.0028856202341110025,
+            "observed_rate": 0
+          }
+        ],
+        "calls_per_completed_meeting": null,
+        "class_prevalence": 0,
+        "completed_meetings": 0,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.002889839408916697,
+        "majority_class_accuracy": 1,
+        "meetings_per_100_attempts": 0,
+        "roc_auc": null
+      },
+      "historical_availability_verified": false,
+      "history_scope": {
+        "availability_verified": false,
+        "complete_within_scope": true,
+        "coverage_definition": "EXISTS searches all qualifying rows in exposed current replica over the stated event-time range, not just sampled rows; does not establish all real calls or historical availability",
+        "coverage_end": "2026-09-26T00:00:00+05:30",
+        "coverage_start": "2026-05-01T00:00:00+05:30",
+        "lifetime_complete": false,
+        "population": "general_erp_employee_outbound",
+        "prior_call_search_verified": true,
+        "scope_id": "erp-outgoing-current-replica-since-2026-05-01-v3",
+        "source_ids": [
+          13
+        ],
+        "source_tables": [
+          "redash.click_to_call"
+        ]
+      },
+      "label_kind": "proxy",
+      "lifetime_history_verified": false,
+      "limitations": [
+        "Complete-history and label verification depend on extraction evidence.",
+        "Observational schedules do not identify causal policy lift.",
+        "Calibration reuses selection validation; its independent quality is assessed only on final test.",
+        "The named target measures linked physical meeting recording, not verified canonical completion.",
+        "Its zero class is observed snapshot absence; unrecorded, missing-link and revised meetings can differ.",
+        "Current-replica prior-call search does not establish lifetime or original decision-time availability.",
+        "Per-row extraction times form an assembled observation bundle, not a transactional database snapshot.",
+        "Fixed sampled dates omit training weekday support for some future/test calls; sparse slots return null."
+      ],
+      "link_coverage": {
+        "groups": {
+          "matched_dsr": {
+            "at_call_budget": {
+              "budget": 117,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 581,
+            "average_precision": null,
+            "brier": 0.00000846774435300841,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 581,
+                "mean_prediction": 0.0028935512435809144,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.0028977934824176593,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "no_matched_dsr": {
+            "at_call_budget": {
+              "budget": 157,
+              "expected_completed_meetings": 0,
+              "precision": 0,
+              "recall": null,
+              "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+              "yield": 0
+            },
+            "attempts": 783,
+            "average_precision": null,
+            "brier": 0.000008387622565362626,
+            "budget_fraction": 0.2,
+            "calibration_bins": [
+              {
+                "bin": 0,
+                "count": 783,
+                "mean_prediction": 0.002879735283278283,
+                "observed_rate": 0
+              }
+            ],
+            "calls_per_completed_meeting": null,
+            "class_prevalence": 0,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": 0.002883937344160555,
+            "majority_class_accuracy": 1,
+            "meetings_per_100_attempts": 0,
+            "roc_auc": null
+          },
+          "unknown_link_coverage": {
+            "at_call_budget": {
+              "budget": 0,
+              "precision": null,
+              "recall": null,
+              "yield": null
+            },
+            "attempts": 0,
+            "average_precision": null,
+            "brier": null,
+            "budget_fraction": 0.2,
+            "calls_per_completed_meeting": null,
+            "class_prevalence": null,
+            "completed_meetings": 0,
+            "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+            "log_loss": null,
+            "majority_class_accuracy": null,
+            "meetings_per_100_attempts": null,
+            "roc_auc": null
+          }
+        },
+        "interpretation": "observed absence and label-source coverage can affect rates; unmatched calls are not verified canonical completion negatives",
+        "matched_only_is_sensitivity": true,
+        "used_as_feature": false
+      },
+      "model_version": "cold-start-observed-scope-proxy-b54c79c89d43-6336a06f",
+      "policy_lift_measured": false,
+      "predictive_acceptance_met": false,
+      "primary_target": "meeting_done",
+      "route": "cold_start_observed_scope",
+      "schema_version": 1,
+      "selected_candidate": "logistic_metadata_False_l2_0.005",
+      "support_sufficient": false,
+      "test_completed_at": "2026-10-09T22:56:05.261307+00:00",
+      "test_uncertainty": {
+        "clusters": 1364,
+        "intervals": {
+          "brier": {
+            "lower": 0.00000833094776927163,
+            "upper": 0.000008510529162256639
+          },
+          "log_loss": {
+            "lower": 0.002873519045677213,
+            "upper": 0.002905445609943878
+          },
+          "yield_at_budget_difference": {
+            "lower": 0,
+            "upper": 0
+          },
+          "yield_at_call_budget": {
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        "method": "seller_cluster_percentile",
+        "repeats": 300,
+        "seed": 1729
+      },
+      "trained": true,
+      "trained_target": "observed_linked_physical_recorded_met_within14days",
+      "training_attempts": 6242,
+      "training_evidence": {
+        "metadata_source_policy": "verified_as_of_only",
+        "training_attempts": 6242,
+        "training_positives": 17,
+        "training_sellers": 6242
+      },
+      "training_proxy_positives": 17,
+      "validation_metrics": {
+        "at_call_budget": {
+          "budget": 467,
+          "expected_completed_meetings": 1,
+          "precision": 0.0021413276231263384,
+          "recall": 0.3333333333333333,
+          "tie_policy": "fractional_expectation_of_uniform_selection_at_cutoff",
+          "yield": 0.0021413276231263384
+        },
+        "attempts": 2334,
+        "average_precision": 0.002207414996696361,
+        "brier": 0.001285735460712268,
+        "budget_fraction": 0.2,
+        "calibration_bins": [
+          {
+            "bin": 0,
+            "count": 2334,
+            "mean_prediction": 0.002789857342626462,
+            "observed_rate": 0.0012853470437017994
+          }
+        ],
+        "calls_per_completed_meeting": 778,
+        "class_prevalence": 0.0012853470437017994,
+        "completed_meetings": 3,
+        "interpretation": "predictive retrospective discrimination; no causal schedule lift",
+        "log_loss": 0.010294928399745829,
+        "majority_class_accuracy": 0.9987146529562982,
+        "meetings_per_100_attempts": 0.12853470437017994,
+        "roc_auc": 0.5908765908765908
+      },
+      "validation_metrics_kind": "raw_before_calibration_fit"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+ "schema_version": 1,
+ "model_version": "erp-outbound-observed-proxy-v4-b1-hour-day-s80-b558f42d",
+ "trained": true,
+ "experimental": true,
+ "label_kind": "proxy",
+ "trained_target": "observed_linked_physical_recorded_met_within14days",
+ "deployment_approved": false,
+ "route": "erp_outbound_observed_proxy",
+ "family": "hour_day",
+ "selected_candidate": "B1_hour_day_s80",
+ "training_attempts": 150875,
+ "training_proxy_positives": 723,
+ "validation_metrics": {
+  "attempts": 165323,
+  "completed_meetings": 628,
+  "class_prevalence": 0.0037986245108061188,
+  "average_precision": 0.006214053816938531,
+  "roc_auc": 0.661384047485576,
+  "brier": 0.0037807699946730148,
+  "log_loss": 0.024441981067383465
+ },
+ "validation_metrics_kind": "dev split, uncalibrated (calibration fitted on dev)",
+ "calibration": {
+  "calibrated": true,
+  "kind": "platt",
+  "slope": 0.9953948213581937,
+  "intercept": -0.17493979191829415,
+  "clip": 1e-06,
+  "fitted_split": "dev",
+  "fitted_window": [
+   "2026-08-25",
+   "2026-08-31"
+  ]
+ },
+ "frozen_model_sha256": "6f3cd7a8bd87c5c39e0c068e466c1e526b199beeb98d1a7aa982bfd728215275",
+ "support_sufficient": true,
+ "predictive_acceptance_met": true,
+ "limitations": [
+  "proxy label, not canonical meeting_done",
+  "no measured timing (within-seller) improvement over v3",
+  "within CSDMERP/MERP channels the retrained table is not better than v3 (see research-v4 decision report)"
+ ],
+ "documentation": "docs/best-time-to-call/research-v4/decision-report.md"
+}

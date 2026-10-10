@@ -1,0 +1,3 @@
+# Training implementation is stdlib; optional existing numpy accelerates fitting.
+# Windows needs IANA timezone data for zoneinfo. Match the verified local version.
+tzdata==2026.4

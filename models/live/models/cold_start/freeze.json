@@ -1,0 +1,9 @@
+{
+  "as_of": "2026-10-09T22:48:35.713Z",
+  "dataset_sha256": "b54c79c89d43853ea97db086174968c6de3ba0bfc1980f2009293c55389ef72d",
+  "eligibility_policy": "observed_first_contact_proxy",
+  "frozen_at": "2026-10-09T22:51:51.896422+00:00",
+  "model_sha256": "30fd0614d55d6ea871283d7389b0090aca4c0dd18be2026811e82e2154e7b991",
+  "split_sha256": "847a8152eb7fdbba15bfba9e8f3f2c7c59258c6f30ca6e787110ae467f548f0b",
+  "test_evaluations": 0
+}

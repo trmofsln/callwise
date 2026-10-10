@@ -1,0 +1,6 @@
+{
+ "selected_candidate": "B1_hour_day_s80",
+ "selection": "research-v4 retrained baseline (dev-tuned smoothing strength)",
+ "trained_target": "observed_linked_physical_recorded_met_within14days",
+ "label_kind": "proxy"
+}
