@@ -3,7 +3,7 @@ import { kv } from "./kv";
 import { clientIp } from "./site-auth";
 
 // Fixed-window limits per client IP on the routes that spend paid API calls (Redash, Sarvam,
-// OpenRouter). Only enforced when the site gate is on (hosted); a storage failure never blocks a request.
+// OpenRouter). Enforced when hosted (Vercel) or when the site gate is on; a storage failure never blocks a request.
 const LIMITS = {
   queue: { limit: 60, windowSeconds: 3600 },     // build call queue
   retry: { limit: 120, windowSeconds: 3600 },    // AI retry after a call
@@ -15,7 +15,7 @@ export type RateBucket = keyof typeof LIMITS;
 
 /** Returns a 429 response when the caller is over the limit, else null. */
 export async function rateLimited(request: Request, bucket: RateBucket): Promise<NextResponse | null> {
-  if (!process.env.SITE_PASSWORD) return null;
+  if (!process.env.VERCEL && !process.env.SITE_PASSWORD) return null;
   const { limit, windowSeconds } = LIMITS[bucket];
   const window = Math.floor(Date.now() / 1000 / windowSeconds);
   let count: number;

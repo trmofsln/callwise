@@ -115,8 +115,7 @@ Each successful lookup saves every seller's profile and Global Context in the
 app store for three days (`lookup:<lookup-id>:<glid>`), so the post-call retry
 planner needs no second ERP query. The UI also offers JSON download. These
 records include the fetched user, company, and STS records; employee output
-includes only assignment-relevant fields. Hosted, the whole app sits behind the
-site password (see Hosting).
+includes only assignment-relevant fields.
 
 ## Calls and meetings
 
@@ -203,12 +202,12 @@ from the Vercel Marketplace for storage. Hosted-only settings:
 
 | Variable | Purpose |
 |---|---|
-| `SITE_PASSWORD` | Turns on the site-wide password gate (`proxy.ts`): pages redirect to `/login`, APIs answer 401 without the signed session cookie. Unset locally, so the gate is off. |
+| `SITE_PASSWORD` | Optional. Turns on a site-wide password gate (`proxy.ts`): pages redirect to `/login`, APIs answer 401 without the signed session cookie. Unset, the site opens directly (the current hosted setup). |
 | `SITE_SESSION_SECRET` | HMAC key for the 30-day site session cookie. Changing it, or the password, signs everyone out. |
 | `SETTINGS_ENCRYPTION_KEY` | Encrypts the shared Global Context token. |
 | `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Added by the Upstash integration. |
 
-With the gate on, routes that spend paid API calls are rate-limited per IP
+Hosted, routes that spend paid API calls are rate-limited per IP
 (`lib/rate-limit.ts`). Redash, Sarvam, OpenRouter and Global Context keys stay
 server-side; the browser never receives them. Model artifacts are read from
 `models/live` (aggregate tables only), and recordings are converted with the
