@@ -82,6 +82,10 @@ export function explainPrediction({context,settings,strategy,recommended,prefere
   const conv=context.conversation,mood=moodPhrase(conv);
   const told=numbers&&mood?numbers.replace(/\.$/,`, and ${mood}.`):numbers||(mood?`${mood.charAt(0).toUpperCase()}${mood.slice(1)}.`:"");
   if(stop)return `Calling is paused for this seller for now because of a do-not-call mark or the attempt limit.${numbers?` ${numbers}`:""} We will suggest a time again as soon as calling is allowed.`;
+  if(context.history_status==="verified"&&!recommended){
+    const cb=context.conversation?.callback?` On the last call the client asked to be called back ${context.conversation.callback.label??"later"}.`:"";
+    return `No calling window is left in the next ${plural(settings.horizonDays,"day")} within calling hours (${settings.businessStartHour}:00 to ${settings.businessEndHour}:00 on calling days).${told?` ${told}`:""}${cb} Check back on the next calling day, or raise "Future days to consider" in Admin to plan further ahead.`;
+  }
   if(context.history_status!=="verified"||!recommended)return `We could not load enough of this seller's call history to pick a time just yet.${numbers?` ${numbers}`:""} Refresh in a moment and a calling time will appear here.`;
   const use=callbackUse(context,settings,recommended),asked=callbackSentence(context,settings,use);
   if(use==="used")return `${asked}${told?` ${told}`:""} Best time to call: ${slot}.`;
